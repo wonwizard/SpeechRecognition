@@ -9,14 +9,16 @@ O OpenSeq2Seq(nvidia) : OpenSeq2Seq is a TensorFlow-based toolkit for sequence-t
 speech recognition?(DeepSpeech2, Wave2Letter, Jasper, …) language model?(LSTM, …)
 speech commands?(RN-50, Jasper) speech synthesis(합성)?(Tacotron2, WaveNet…) machine translation?(GNMT, Transformer, ConvS2S, …)
 sentiment analysis?(SST, IMDB, …) image classification?(ResNet-50)
+
 https://nvidia.github.io/OpenSeq2Seq/html/speech-recognition.html
 https://github.com/NVIDIA/OpenSeq2Seq
 
-O ESPnet: end-to-end speech processing toolkithttps://github.com/espnet/espnet  CTC-Attention STT TTS
+O ESPnet: end-to-end speech processing toolkit
+https://github.com/espnet/espnet  CTC-Attention STT TTS
 
 O LAS + Specaugment   
 https://github.com/DemisEom/SpecAugment    A Implementation of SpecAugment with Tensorflow & Pytorch
-https://github.com/KimJeongSun/SpecAugment_numpy_scipy  SpecAugment with numpy & scipy, 100 time faster than using tensorflow.
+https://github.com/KimJeongSun/SpecAugment_numpy_scipy  SpecAugment with numpy & scipy, 100 time faster than using tensorflow
 https://github.com/Alexander-H-Liu/End-to-end-ASR-Pytorch  Listen, Attend and Spell - PyTorch Implementation + LM
 
 O PyTorch Implementations for End-to-End Automatic Speech Recognition  RNN-T
