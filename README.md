@@ -6,10 +6,11 @@ O Jasper Pytorch + Specaugment (nvidia) 2019
 https://github.com/NVIDIA/DeepLearningExamples/tree/master/PyTorch/SpeechRecognition/Jasper
 
 O OpenSeq2Seq(nvidia) : OpenSeq2Seq is a TensorFlow-based toolkit for sequence-to-sequence models (nvidia)
-speech recognition?(DeepSpeech2, Wave2Letter, Jasper, ¡¦) language model?(LSTM, ¡¦)
-speech commands?(RN-50, Jasper) speech synthesis(ÇÕ¼º)?(Tacotron2, WaveNet¡¦) machine translation?(GNMT, Transformer, ConvS2S, ¡¦)
-sentiment analysis?(SST, IMDB, ¡¦) image classification?(ResNet-50)
-https://nvidia.github.io/OpenSeq2Seq/html/speech-recognition.htmlhttps://github.com/NVIDIA/OpenSeq2Seq
+speech recognition?(DeepSpeech2, Wave2Letter, Jasper, â€¦) language model?(LSTM, â€¦)
+speech commands?(RN-50, Jasper) speech synthesis(í•©ì„±)?(Tacotron2, WaveNetâ€¦) machine translation?(GNMT, Transformer, ConvS2S, â€¦)
+sentiment analysis?(SST, IMDB, â€¦) image classification?(ResNet-50)
+https://nvidia.github.io/OpenSeq2Seq/html/speech-recognition.html
+https://github.com/NVIDIA/OpenSeq2Seq
 
 O ESPnet: end-to-end speech processing toolkithttps://github.com/espnet/espnet  CTC-Attention STT TTS
 
