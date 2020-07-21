@@ -1,4 +1,4 @@
-# Speech Recognition Study and Srcs
+# Speech Recognition Study and Codes
 
 O speech_resnet_pytorch - my test code
 
