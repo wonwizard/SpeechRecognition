@@ -1,0 +1,33 @@
+{
+    "config_version": 2,
+    "model":{
+        "enc":{
+            "layer_size": 4
+        },
+        "dec":{
+            "layer_size": 2,
+            "use_attention": true,
+            "max_len": 80
+        },
+        "rnn_cell": "lstm",
+        "hidden_size": 512,
+        "dropout": 0.2,
+        "bidirectional": true
+    },
+    "data":{
+        "use_mel_scale": true,
+        "spec_augment": {
+            "use": true,
+            "time_warping_para": 80,
+            "frequency_masking_para": 54,
+            "time_masking_para": 100,
+            "frequency_mask_num": 1,
+            "time_mask_num": 1
+        }
+    },
+    "batch_size": 8,
+    "workers": 2,
+    "max_epochs": 100,
+    "lr": 1e-04,
+    "teacher_forcing": 0.5
+}

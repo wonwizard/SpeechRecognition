@@ -1,0 +1,35 @@
+{
+    "config_version": 2,
+    "model":{
+        "enc":{
+            "layer_size": 3
+        },
+        "dec":{
+            "layer_size": 3,
+            "use_attention": true,
+            "max_len": 80
+        },
+        "rnn_cell": "gru",
+        "hidden_size": 512,
+        "dropout": 0.2,
+        "bidirectional": true
+    },
+    "data":{
+        "use_mel_scale": false,
+        "spec_augment": {
+            "use": false
+        },
+		"trim_silence": {
+			"use": true,
+			"threshold_attack": 0.01,
+			"threshold_release": 0.01,
+			"attack_margin": 5000,
+			"release_margin": 5000
+		}
+    },
+    "batch_size": 8,
+    "workers": 2,
+    "max_epochs": 30,
+    "lr": 1e-04,
+    "teacher_forcing": 0.5
+}
