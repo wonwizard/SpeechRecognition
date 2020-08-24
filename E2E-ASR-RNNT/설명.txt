@@ -1,0 +1,28 @@
+﻿https://github.com/HawkAaron/E2E-ASR
+
+PyTorch Implementations for End-to-End Automatic Speech Recognition
+
+
+Graves 2013 experiments
+
+File description
+model.py: rnnt joint model
+model2012.py: graves2012 model
+train_rnnt.py: rnnt training script
+train_ctc.py: ctc acoustic model training script
+eval.py: rnnt & ctc decode
+DataLoader.py: kaldi feature loader
+
+
+Results
+Model	PER
+CTC	21.38
+RNN-T	20.59
+
+
+Reference
+RNN Transducer (Graves 2012): Sequence Transduction with Recurrent Neural Networks
+RNNT joint (Graves 2013): Speech Recognition with Deep Recurrent Neural Networks
+(PyTorch End-to-End Models for ASR)[https://github.com/awni/speech]
+(A Fast Sequence Transducer GPU Implementation with PyTorch Bindings)[https://github.com/HawkAaron/warp-transducer/tree/add_network_accelerate]
+
