@@ -1,0 +1,11 @@
+﻿https://github.com/dltnwl/Korean-Speech-recognition
+
+dltnwl/Korean-Speech-recognition
+
+Korean speech recognition(End to End)
+
+CTC
+
+Listen Attend and Spell
+
+한글 초성 중성 종성으로 구분하여 사용 class 56개
