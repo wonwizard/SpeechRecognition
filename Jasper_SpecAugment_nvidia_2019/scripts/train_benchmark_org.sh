@@ -16,7 +16,7 @@
 
 echo "Container nvidia build = " $NVIDIA_BUILD_ID
 
-DATA_DIR=${1:-"/NAS/datasets/LibriSpeech"}
+DATA_DIR=${1:-"/datasets/LibriSpeech"}
 MODEL_CONFIG=${2:-"configs/jasper10x5dr_sp_offline_specaugment.toml"}
 RESULT_DIR=${3:-"/results"}
 CREATE_LOGFILE=${4:-"true"}

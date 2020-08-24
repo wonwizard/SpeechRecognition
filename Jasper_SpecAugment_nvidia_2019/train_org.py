@@ -24,13 +24,9 @@ import random
 import numpy as np
 import math
 from dataset import AudioToTextDataLayer
-#lnw modified for cer
-#from helpers import monitor_asr_train_progress, process_evaluation_batch, process_evaluation_epoch, Optimization, add_ctc_labels, AmpOptimizations, model_multi_gpu, print_dict, print_once
-from helpers import monitor_asr_train_progress2, process_evaluation_batch, process_evaluation_epoch2, Optimization, add_ctc_labels, AmpOptimizations, model_multi_gpu, print_dict, print_once
+from helpers import monitor_asr_train_progress, process_evaluation_batch, process_evaluation_epoch, Optimization, add_ctc_labels, AmpOptimizations, model_multi_gpu, print_dict, print_once
 from model import AudioPreprocessing, CTCLossNM, GreedyCTCDecoder, Jasper
 from optimizers import Novograd, AdamW
-#lnw add
-from datetime import datetime
 
     
 def lr_policy(initial_lr, step, N):
@@ -131,17 +127,10 @@ def train(
                 process_evaluation_batch(values_dict, _global_var_dict, labels=labels)
 
             # final aggregation across all workers and minibatches) and logging of results
-            #lnw modified for cer
-            #wer, eloss = process_evaluation_epoch(_global_var_dict)
-            wer, eloss, cer = process_evaluation_epoch2(_global_var_dict)
+            wer, eloss = process_evaluation_epoch(_global_var_dict)
         
-            print_once("==========>>>>>>Evaluation Loss: {0}".format(eloss))
-            print_once("==========>>>>>>Evaluation WER: {0}".format(wer))
-            #lnw add for cer
-            print_once("==========>>>>>>Evaluation CER: {0}".format(cer))
-            #lnw add
-            print("Evaluation end time : "+str(datetime.now()))
-            
+            print_once("==========>>>>>>Evaluation Loss: {0}\n".format(eloss))
+            print_once("==========>>>>>>Evaluation WER: {0}\n".format(wer))
             
     print_once("Starting .....")
     start_time = time.time()
@@ -154,9 +143,6 @@ def train(
         if multi_gpu:
             data_layer.sampler.set_epoch(epoch)
         print_once("Starting epoch {0}, step {1}".format(epoch, step))
-        #lnw add
-        lEpochStart_time = datetime.now()
-        print("Epoch Start time : "+str(lEpochStart_time))
         last_epoch_start = time.time()
         batch_counter = 0
         average_loss = 0
@@ -200,15 +186,9 @@ def train(
                     t_predictions_t = greedy_decoder(log_probs=t_log_probs_t)
 
                     e_tensors = [t_predictions_t, t_transcript_t, t_transcript_len_t]
-                    #lnw modified for cer
-                    #train_wer = monitor_asr_train_progress(e_tensors, labels=labels)
-                    train_wer,train_cer  = monitor_asr_train_progress2(e_tensors, labels=labels)
+                    train_wer = monitor_asr_train_progress(e_tensors, labels=labels)
                     print_once("Loss@Step: {0}  ::::::: {1}".format(step, str(average_loss)))
                     print_once("Step time: {0} seconds".format(time.time() - last_iter_start))
-
-                    #lnw add for print wer cer
-                    print_once("==========>>>>>>Train WER: {0}".format(train_wer))
-                    print_once("==========>>>>>>Train CER: {0}".format(train_cer))
 
                 if step > 0 and step % args.eval_frequency == 0:
                     print_once("Doing Evaluation ....................... ......  ... .. . .")
@@ -227,11 +207,6 @@ def train(
             save(model, optimizer, epoch, output_dir=args.output_dir)
         if args.num_steps is None and epoch >= args.num_epochs:
             break
-
-        #lnw add
-        lEpochEnd_time = datetime.now()
-        print("Epoch End time: "+str(lEpochEnd_time),"Duration:",str(lEpochEnd_time - lEpochStart_time),"SratTime-NowTime:",str(lEpochEnd_time - lstart_time))
-
     print_once("Done in {0}".format(time.time() - start_time))
     print_once("Final Evaluation ....................... ......  ... .. . .")
     eval()
@@ -354,8 +329,7 @@ def main(args):
 
     if optim_level in AmpOptimizations:
         model, optimizer = amp.initialize(
-            #lnw block for error
-            #min_loss_scale=1.0,
+            min_loss_scale=1.0,
             models=model,
             optimizers=optimizer,
             opt_level=AmpOptimizations[optim_level])
@@ -408,21 +382,6 @@ def parse_args():
 
 
 if __name__=="__main__":
-
-
-    #lnw start time
-    lstart_time = datetime.now()
-    print("Start time : "+str(lstart_time))
-
     args = parse_args()
     print_dict(vars(args))
     main(args)
-
-    #lnw end time, duration
-    lend_time = datetime.now()
-    print("End time : "+str(lend_time))
-    print('Duration: {}'.format(lend_time - lstart_time))
-
-
-
-

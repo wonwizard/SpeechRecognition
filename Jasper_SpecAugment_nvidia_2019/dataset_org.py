@@ -150,9 +150,7 @@ class AudioToTextDataLayer:
         shuffle = kwargs.get('shuffle', True)
         min_duration = featurizer_config.get('min_duration', 0.1)
         max_duration = featurizer_config.get('max_duration', None)
-        #lnw modified for hangul
-        #normalize_transcripts = kwargs.get('normalize_transcripts', True)
-        normalize_transcripts = kwargs.get('normalize_transcripts', False)
+        normalize_transcripts = kwargs.get('normalize_transcripts', True)
         trim_silence = kwargs.get('trim_silence', False)
         multi_gpu = kwargs.get('multi_gpu', False)
         sampler_type = kwargs.get('sampler', 'default')

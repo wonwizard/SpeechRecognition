@@ -16,23 +16,24 @@
 #!/bin/bash
 echo "Container nvidia build = " $NVIDIA_BUILD_ID
 
-DATA_DIR=${1:-"/NAS/datasets/LibriSpeech"}
+
+DATA_DIR=${1-"/datasets/LibriSpeech"}
 DATASET=${2:-"dev-clean"}
 MODEL_CONFIG=${3:-"configs/jasper10x5dr_sp_offline_specaugment.toml"}
 RESULT_DIR=${4:-"/results"}
 CHECKPOINT=$5
 CREATE_LOGFILE=${6:-"true"}
 CUDNN_BENCHMARK=${7:-"false"}
-NUM_GPUS=${8:-1}
-PRECISION=${9:-"fp32"}
-NUM_STEPS=${10:-"-1"}
-SEED=${11:-0}
-BATCH_SIZE=${12:-64}
-
+PRECISION=${8:-"fp32"}
+NUM_STEPS=${9:-"-1"}
+SEED=${10:-0}
+BATCH_SIZE=${11:-64}
+MODELOUTPUT_FILE=${12:-"none"}
+PREDICTION_FILE=${13:-"$RESULT_DIR/${DATASET}.predictions"}
 
 if [ "$CREATE_LOGFILE" = "true" ] ; then
-    export GBS=$(expr $BATCH_SIZE \* $NUM_GPUS)
-    printf -v TAG "jasper_evaluation_${DATASET}_%s_gbs%d" "$PRECISION" $GBS
+    export GBS=$(expr $BATCH_SIZE)
+    printf -v TAG "jasper_inference_${DATASET}_%s_gbs%d" "$PRECISION" $GBS
     DATESTAMP=`date +'%y%m%d%H%M%S'`
     LOGFILE="${RESULT_DIR}/${TAG}.${DATESTAMP}.log"
     printf "Logs written to %s\n" "$LOGFILE"
@@ -50,19 +51,33 @@ else
     exit -2
 fi
 
-STEPS=""
-if [ "$NUM_STEPS" -gt 0 ] ; then
-    STEPS=" --steps $NUM_STEPS"
+PRED=""
+if [ "$PREDICTION_FILE" = "none" ] ; then
+    PRED=""
+else
+    PRED=" --save_prediction $PREDICTION_FILE"
 fi
 
-if [ "$CUDNN_BENCHMARK" = "true" ] ; then
+OUTPUT=""
+if [ "$MODELOUTPUT_FILE" = "none" ] ; then
+    OUTPUT=" "
+else
+    OUTPUT=" --logits_save_to $MODELOUTPUT_FILE"
+fi
+
+
+if [ "$CUDNN_BENCHMARK" = "true" ]; then
     CUDNN_BENCHMARK=" --cudnn_benchmark"
 else
     CUDNN_BENCHMARK=""
 fi
 
+STEPS=""
+if [ "$NUM_STEPS" -gt 0 ] ; then
+    STEPS=" --steps $NUM_STEPS"
+fi
 
-CMD=" inference.py "
+CMD=" python inference.py "
 CMD+=" --batch_size $BATCH_SIZE "
 CMD+=" --dataset_dir $DATA_DIR "
 CMD+=" --val_manifest $DATA_DIR/librispeech-${DATASET}-wav.json "
@@ -70,15 +85,10 @@ CMD+=" --model_toml $MODEL_CONFIG  "
 CMD+=" --seed $SEED "
 CMD+=" --ckpt $CHECKPOINT "
 CMD+=" $CUDNN_BENCHMARK"
+CMD+=" $PRED "
+CMD+=" $OUTPUT "
 CMD+=" $PREC "
 CMD+=" $STEPS "
-
-
-if [ "$NUM_GPUS" -gt 1  ] ; then
-    CMD="python3 -m torch.distributed.launch --nproc_per_node=$NUM_GPUS $CMD"
-else
-    CMD="python3  $CMD"
-fi
 
 
 set -x
@@ -90,3 +100,5 @@ else
    ) |& tee "$LOGFILE"
 fi
 set +x
+echo "MODELOUTPUT_FILE: ${MODELOUTPUT_FILE}"
+echo "PREDICTION_FILE: ${PREDICTION_FILE}"

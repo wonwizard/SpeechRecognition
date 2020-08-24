@@ -1,0 +1,3731 @@
+Container nvidia build = 
+Logs written to /home/neoadmin/stt/Jasper/results/jasper_train_fp32_gbs10.190917173801.log
++ '[' -z /home/neoadmin/stt/Jasper/results/jasper_train_fp32_gbs10.190917173801.log ']'
++ tee /home/neoadmin/stt/Jasper/results/jasper_train_fp32_gbs10.190917173801.log
++ python3 train.py --batch_size=10 --num_epochs=400 --output_dir=/home/neoadmin/stt/Jasper/results --model_toml=configs/jasper10x5dr_sp_offline_specaugment.toml --lr=0.015 --seed=6 --optimizer=novograd --dataset_dir=/home/neoadmin/stt/aihack_speech/baseline/sample_dataset/train --val_manifest=/home/neoadmin/stt/aihack_speech/baseline/sample_dataset/train/val-wav.json --train_manifest=/home/neoadmin/stt/aihack_speech/baseline/sample_dataset/train/train-wav.json --weight_decay=1e-3 --save_freq=100 --eval_freq=25 --train_freq=25 --lr_decay --gradient_accumulation_steps=1
+Start time : 2019-09-17 17:38:02.117852
+Arguments:
+	                 batch_size : 10
+	                       ckpt : None
+	                      cudnn : False
+	                dataset_dir : /home/neoadmin/stt/aihack_speech/baseline/sample_dataset/train
+	             eval_frequency : 25
+	                       fp16 : False
+	gradient_accumulation_steps : 1
+	                 local_rank : None
+	                         lr : 0.015
+	                   lr_decay : True
+	               max_duration : None
+	                 model_toml : configs/jasper10x5dr_sp_offline_specaugment.toml
+	                 num_epochs : 400
+	                  num_steps : None
+	             optimizer_kind : novograd
+	                 output_dir : /home/neoadmin/stt/Jasper/results
+	                 pad_to_max : False
+	             save_frequency : 100
+	                       seed : 6
+	            train_frequency : 25
+	             train_manifest : /home/neoadmin/stt/aihack_speech/baseline/sample_dataset/train/train-wav.json
+	               val_manifest : /home/neoadmin/stt/aihack_speech/baseline/sample_dataset/train/val-wav.json
+	               weight_decay : 0.001
+model_config
+Arguments:
+	   encoder : {'activation': 'relu', 'convmask': True}
+	     input : {'trim_silence': True, 'optimization_level': <Optimization.mxprO0: 1>, 'cutout_x_width': 6, 'cutout_y_width': 6, 'normalize_transcripts': True, 'feat_type': 'logfbank', 'features': 64, 'frame_splicing': 1, 'dither': 1e-05, 'cutout_rect_regions': 0, 'pad_to': 16, 'speed_perturbation': True, 'cutout_x_regions': 2, 'sample_rate': 16000, 'max_duration': 16.7, 'cutout_rect_time': 60, 'cutout_rect_freq': 25, 'window_size': 0.02, 'cutout_y_regions': 2, 'n_fft': 512, 'window_stride': 0.01, 'normalize': 'per_feature', 'window': 'hann'}
+	input_eval : {'pad_to': 16, 'window_size': 0.02, 'trim_silence': True, 'dither': 1e-05, 'window': 'hann', 'sample_rate': 16000, 'normalize_transcripts': True, 'feat_type': 'logfbank', 'features': 64, 'n_fft': 512, 'window_stride': 0.01, 'frame_splicing': 1, 'optimization_level': <Optimization.mxprO0: 1>, 'normalize': 'per_feature'}
+	    jasper : [{'filters': 256, 'residual': False, 'dropout': 0.2, 'dilation': [1], 'kernel': [11], 'repeat': 1, 'stride': [2]}, {'filters': 256, 'residual': True, 'dropout': 0.2, 'dilation': [1], 'kernel': [11], 'residual_dense': True, 'repeat': 5, 'stride': [1]}, {'filters': 256, 'residual': True, 'dropout': 0.2, 'dilation': [1], 'kernel': [11], 'residual_dense': True, 'repeat': 5, 'stride': [1]}, {'filters': 384, 'residual': True, 'dropout': 0.2, 'dilation': [1], 'kernel': [13], 'residual_dense': True, 'repeat': 5, 'stride': [1]}, {'filters': 384, 'residual': True, 'dropout': 0.2, 'dilation': [1], 'kernel': [13], 'residual_dense': True, 'repeat': 5, 'stride': [1]}, {'filters': 512, 'residual': True, 'dropout': 0.2, 'dilation': [1], 'kernel': [17], 'residual_dense': True, 'repeat': 5, 'stride': [1]}, {'filters': 512, 'residual': True, 'dropout': 0.2, 'dilation': [1], 'kernel': [17], 'residual_dense': True, 'repeat': 5, 'stride': [1]}, {'filters': 640, 'residual': True, 'dropout': 0.3, 'dilation': [1], 'kernel': [21], 'residual_dense': True, 'repeat': 5, 'stride': [1]}, {'filters': 640, 'residual': True, 'dropout': 0.3, 'dilation': [1], 'kernel': [21], 'residual_dense': True, 'repeat': 5, 'stride': [1]}, {'filters': 768, 'residual': True, 'dropout': 0.3, 'dilation': [1], 'kernel': [25], 'residual_dense': True, 'repeat': 5, 'stride': [1]}, {'filters': 768, 'residual': True, 'dropout': 0.3, 'dilation': [1], 'kernel': [25], 'residual_dense': True, 'repeat': 5, 'stride': [1]}, {'filters': 896, 'residual': False, 'dropout': 0.4, 'dilation': [2], 'kernel': [29], 'repeat': 1, 'stride': [1]}, {'filters': 1024, 'residual': False, 'dropout': 0.4, 'dilation': [1], 'kernel': [1], 'repeat': 1, 'stride': [1]}]
+	    labels : {'labels': [' ', '군', '철', '쁘', '식', '몬', '랍', '렁', '죄', '처', '직', '꾸', '움', '띄', '탕', '로', '셋', '올', '캡', '두', '브', '섞', '앉', '던', '싼', '찍', '랜', '관', '앙', '봤', '둔', '악', '저', '컵', '혹', '흘', '맘', '뜨', '겠', '씀', '좁', '닌', '향', '춘', '좌', '캐', '린', '넵', 'f', 's', '빕', '념', '랙', '좋', '짐', '작', '냥', '헤', '뱅', '금', '쿠', '뽑', '나', '임', '신', ')', '뜻', '콤', '엄', '탄', '뮤', '은', '3', '년', '쭤', '첫', '찮', 'i', '셔', '멤', '콘', '발', '멀', '모', '덕', '룰', '경', '-', '6', '질', '렛', '잔', '깥', '불', '리', '왔', '닉', '행', '흥', '출', '곡', '데', '위', '걸', '깐', '숭', '연', '꺼', '새', '봉', '7', '서', '됩', '폭', '옷', '억', 'p', '붐', '톡', '클', '트', '칸', '말', '?', '태', '역', '심', '괜', '즉', '튜', '한', 'b', '(', '딜', '끼', '삼', '혜', '병', '좀', '빛', '토', '결', '힘', '치', '십', '구', '눠', '렸', '팔', '렬', '넉', '0', '윙', '든', '쭈', '간', '칭', '균', '련', '총', '벼', '픈', '답', '약', '너', '욕', '젓', '형', '취', '양', '킬', '준', '령', '택', '울', '손', '열', '즌', '계', '인', '률', '빠', '찼', '봄', '갑', '폰', '센', '님', '퀘', '윈', '늘', '독', '가', '섬', '즘', '풍', '짝', '걱', '꿔', '롭', '^', '게', '팡', '국', '셧', '력', '갔', '등', '빌', '웹', '푼', '영', '션', '그', '1', '찹', '깎', 'o', 'c', '라', '무', '건', '극', '설', '뜰', '싱', '높', '절', '밥', '판', '뒤', '씨', '냅', '소', '웰', '텔', '귀', '녕', '쓴', '개', '헷', '언', '웠', '뭐', '돼', '런', '벽', '교', '낫', '!', '포', '뉴', '딱', '참', '민', '학', '황', 'r', '친', '실', '착', '혼', '쉐', '녁', '몰', '왜', '묶', '완', '후', '빅', '핀', '호', '최', '묘', '아', 'e', '려', 'u', '커', '텐', '람', '레', '옮', '허', '뒷', ':', '잇', '눌', '환', '엽', '밀', '암', '과', '랴', '와', '할', '효', '월', '했', '져', '켓', '풀', '흰', '끈', '드', '떤', '킨', '앞', '챙', '받', '먼', '없', '놔', '뀌', '망', '씩', '온', '천', '코', '북', '렵', '꺾', '추', '엘', '듬', '류', '익', '갠', '맛', '못', '입', '젠', '험', '어', '빈', 'd', '니', 't', '밖', '땅', '티', '법', '난', '프', '놓', '반', '현', '씹', '본', '층', '항', '쓸', '였', '제', '분', '매', '외', 'ㅇ', '돈', '돌', '맡', '패', '롯', '진', '눈', '웃', '뤄', '급', '푸', '휠', '림', 'g', '쁜', '획', '야', '히', '엊', '잘', '옆', '것', '략', 'k', '갖', '스', '상', '넓', '둘', '렴', '빵', '쯤', '릇', '빙', '쌍', '충', '홈', '습', '앗', '으', '공', '평', '차', '룸', '밑', '면', '멜', '닫', '회', '지', '벤', '짜', '셜', '들', '묻', '곧', '끄', '될', '잖', '속', '원', '붙', '따', '초', '체', '곳', '고', '냉', '쉬', '세', '팁', '술', '늦', '견', '낮', '됐', '>', '찾', '화', '츠', '쉽', '촬', '합', '털', '흡', '곱', '델', '을', '루', '럽', '널', '예', '블', '담', '홓', '협', '2', '캘', '머', '액', '뇨', '얄', '용', '었', '램', '동', '잠', '겨', '굽', '길', '번', '페', '슬', '곤', '꽝', '릭', 'l', '운', '줘', '춰', '닙', '문', '끔', '쨈', '누', '똑', '핸', '능', '숟', '칵', '벌', '각', '숙', '깝', '름', '릉', '기', '많', '뭘', '짧', '휴', '례', '되', '립', '텍', '맙', '렇', '늄', '보', '메', '전', '겼', '며', '비', '랫', '볶', '쳐', '순', '방', '수', '렷', '릴', '킹', '증', '료', '송', '딸', '볼', '꿀', '셨', '맵', '피', '업', '크', '명', '겅', '청', '규', '떄', '율', '놀', 'v', '워', '미', '꼭', '감', '섯', '박', '플', '횡', '막', '당', '8', '탐', '육', '헛', '검', '눕', '횟', '유', '품', '넘', '값', '른', '함', '권', '사', '거', '쭉', '9', '죠', '논', '렌', '샐', '오', '물', '족', '닥', '콕', '안', '콜', '홍', '녀', '웨', '큰', '퀴', '흠', '럴', '도', '놨', '4', '링', '갈', '켰', '맞', '르', '픽', '엔', '해', '탔', '확', '중', '우', '산', '잡', '껀', '별', '겁', '덯', '음', '이', '얘', '농', '맨', 'x', '버', '칠', '변', '싸', '점', '주', '자', '몇', '마', '일', '에', '뵙', '부', '근', '및', '엇', '달', '콩', '때', '뭔', '쇼', '복', '승', '테', '칼', '슨', '의', '끝', '접', '뭣', '닭', ';', '혀', '래', '내', '록', '통', '파', '큼', '딘', '글', '찬', '조', '대', '창', '얼', '요', '7', '쥬', '락', '성', '밤', '필', '째', '다', '된', '뗗', '압', '딩', '~', '5', '생', '.', '까', '앱', '더', '또', '깔', '랑', '싶', '봐', '석', '촌', '핑', '났', '하', '여', '같', '카', '편', '릿', '왕', '잃', '범', '몽', '끌', '넷', '컨', 'j', '긴', '타', '날', '툰', '징', '빼', '특', '집', '？', '럭', '김', '네', '턱', 'n', '목', '강', '럼', '죽', 'ㄴ', '남', '느', '키', '베', '를', '쓰', '%', '써', '광', '침', '엑', '궁', '케', '겸', '존', '+', '알', '졸', '떻', '맥', '둬', '색', '먹', '표', '바', '있', '았', '욜', '컴', '백', '큐', '장', '튀', '덟', '쪽', '빨', '탈', '정', '삭', '러', '격', '뷰', '줍', '썬', '꽉', '댈', '골', '졌', '즈', '퍼', '짠', '투', '애', '채', '홀', '팥', '재', '축', '앤', '단', '는', '시', 'a', '께', '종', '떠', '벨', '않', '쇠', '선', '살', '팀', '란', '량', '터', '노', '배', '롬', '옥', '켜', '떡', '팅', '희', '만', '디', '응', '듣', '잊', '넛', '줄', '적', '탁', '쑥', '떨', "'", '<BLANK>']}
+	     model : Jasper
+Dataset loaded with 0.12 hours. Filtered 0.00 hours.
+sort_by_duration False
+Dataset loaded with 0.01 hours. Filtered 0.00 hours.
+sort_by_duration False
+PADDING: 16
+Number of parameters in encoder: 332602624
+Number of parameters in decode: 837425
+-----------------
+Have 90 examples to train on.
+Have 9 steps / (gpu * epoch).
+-----------------
+Selected optimization level O0:  Pure FP32 training.
+
+Defaults for this optimization level are:
+patch_torch_functions  : False
+keep_batchnorm_fp32    : None
+cast_model_type        : torch.float32
+enabled                : True
+opt_level              : O0
+master_weights         : False
+loss_scale             : 1.0
+Processing user overrides (additional kwargs that are not None)...
+After processing overrides, optimization options are:
+patch_torch_functions  : False
+keep_batchnorm_fp32    : None
+cast_model_type        : torch.float32
+enabled                : True
+opt_level              : O0
+master_weights         : False
+loss_scale             : 1.0
+Starting .....
+Starting epoch 0, step 0
+Start time : 2019-09-17 17:38:07.976112
+training_batch_WER: 1.0
+Prediction: 오옷물걱퀴i낮잘략밑꺾남부퀴개텐할풍파풍접격찹택풀자걱릿오풍맵탁꼭앱업행뉴턱롭휠j새출으중랴빛퀴뉴징멜효벌칸털룸널암빛엽쯤최쇼핀옷농억o털칸찼넘똑덟뵙앗풍캘꼭억롯j신오룸회켜택삭작싼수앱으갑택긴0털억털북품깝듬늘문엽빕억탁몇최돼닫털멜출풍헛코적품썬십습문증행련최견퀴죽즌분뜻찬렷새풍입평풍람퀴멜꼭전칼실땅성뉴벌택몇최올엽싱규텐카-문찹퀴홀구끄쑥뭘릴묻잊엘0던쉽u께핀꼭쉬메릴짜첫생텐꼭리롭몽칸는약뉴오충따셨띄묶곡롭감몰탈옷심판림또죽뭘죽예심홀엑칵십증갔촌즉련리깎북릴빨되헷깎혜오렁텐곤죽약맥2툰벤예꽝챙웹텐억라피털리i곧갑메멜잖춘싱뭘2텐r즘연억품복궁첫k카옷행뉴메뭣걱되뉴략픽곤렁맘축b빛칠씩죽맵많억툰갈됐으되징퀴
+Reference:  아기용  숟가락이랑 포크 준비 되죠?  
+Loss@Step: 0  ::::::: 1417.822509765625
+Step time: 1.8479483127593994 seconds
+==========>>>>>>Train WER: 1.0
+
+==========>>>>>>Train CER: 20.317241379310346
+
+Finished epoch 0 in 16.470228672027588
+Starting epoch 1, step 9
+Start time : 2019-09-17 17:38:24.446385
+Finished epoch 1 in 16.704113245010376
+Starting epoch 2, step 18
+Start time : 2019-09-17 17:38:41.150553
+training_batch_WER: 1.0
+Prediction:     
+Reference:  스테이크종류는 어떤게 있나요?  
+Loss@Step: 25  ::::::: 114.7042236328125
+Step time: 1.8315374851226807 seconds
+==========>>>>>>Train WER: 1.0
+
+==========>>>>>>Train CER: 1.0
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 96.76561737060547
+
+==========>>>>>>Evaluation WER: 1.0
+
+==========>>>>>>Evaluation CER: 1.0
+
+Evaluation end time : 2019-09-17 17:38:56.901501
+Finished epoch 2 in 17.602636098861694
+Starting epoch 3, step 27
+Start time : 2019-09-17 17:38:58.753237
+Finished epoch 3 in 16.93946385383606
+Starting epoch 4, step 36
+Start time : 2019-09-17 17:39:15.692752
+Finished epoch 4 in 17.07492733001709
+Starting epoch 5, step 45
+Start time : 2019-09-17 17:39:32.767733
+training_batch_WER: 1.0
+Prediction:     
+Reference:  버스에서 내려서 어떻게 찾아가죠?  
+Loss@Step: 50  ::::::: 74.165771484375
+Step time: 1.785336971282959 seconds
+==========>>>>>>Train WER: 1.0
+
+==========>>>>>>Train CER: 1.0
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 103.76722717285156
+
+==========>>>>>>Evaluation WER: 1.0
+
+==========>>>>>>Evaluation CER: 0.9694656488549618
+
+Evaluation end time : 2019-09-17 17:39:45.010419
+Finished epoch 5 in 17.827303647994995
+Starting epoch 6, step 54
+Start time : 2019-09-17 17:39:50.595084
+Finished epoch 6 in 17.09915065765381
+Starting epoch 7, step 63
+Start time : 2019-09-17 17:40:07.694286
+Finished epoch 7 in 17.064168691635132
+Starting epoch 8, step 72
+Start time : 2019-09-17 17:40:24.758509
+training_batch_WER: 1.0
+Prediction:     
+Reference:  무슨건물 옆인가요?  
+Loss@Step: 75  ::::::: 82.06241607666016
+Step time: 1.8565382957458496 seconds
+==========>>>>>>Train WER: 1.0
+
+==========>>>>>>Train CER: 1.0
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 73.12337493896484
+
+==========>>>>>>Evaluation WER: 1.0
+
+==========>>>>>>Evaluation CER: 0.9847328244274809
+
+Evaluation end time : 2019-09-17 17:40:33.060752
+Finished epoch 8 in 17.63448429107666
+Starting epoch 9, step 81
+Start time : 2019-09-17 17:40:42.393039
+Finished epoch 9 in 17.07163095474243
+Starting epoch 10, step 90
+Start time : 2019-09-17 17:40:59.464721
+Finished epoch 10 in 17.116499662399292
+Starting epoch 11, step 99
+Start time : 2019-09-17 17:41:16.581277
+training_batch_WER: 1.0
+Prediction:  요          
+Reference:  버스에서 내려서 어떻게 찾아가죠?  
+Loss@Step: 100  ::::::: 73.0190658569336
+Step time: 1.8513026237487793 seconds
+==========>>>>>>Train WER: 1.0
+
+==========>>>>>>Train CER: 0.9788732394366197
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 74.63533782958984
+
+==========>>>>>>Evaluation WER: 1.0
+
+==========>>>>>>Evaluation CER: 0.9083969465648855
+
+Evaluation end time : 2019-09-17 17:41:21.150397
+Finished epoch 11 in 17.859607934951782
+Starting epoch 12, step 108
+Start time : 2019-09-17 17:41:34.440949
+Finished epoch 12 in 17.16032361984253
+Starting epoch 13, step 117
+Start time : 2019-09-17 17:41:51.601325
+training_batch_WER: 1.0
+Prediction:     가?                          
+Reference:  8시에 가려고 하는데 가능한가요?  
+Loss@Step: 125  ::::::: 75.53461456298828
+Step time: 2.1563596725463867 seconds
+==========>>>>>>Train WER: 1.0
+
+==========>>>>>>Train CER: 0.95
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 71.36756134033203
+
+==========>>>>>>Evaluation WER: 1.0
+
+==========>>>>>>Evaluation CER: 0.8778625954198473
+
+Evaluation end time : 2019-09-17 17:42:09.467249
+Finished epoch 13 in 17.887712240219116
+Starting epoch 14, step 126
+Start time : 2019-09-17 17:42:09.489088
+Finished epoch 14 in 17.165849924087524
+Starting epoch 15, step 135
+Start time : 2019-09-17 17:42:26.654990
+Finished epoch 15 in 17.167793035507202
+Starting epoch 16, step 144
+Start time : 2019-09-17 17:42:43.822839
+training_batch_WER: 1.0
+Prediction:     요  
+Reference:  예약 취소 때문에 전화드렸습니다  
+Loss@Step: 150  ::::::: 75.48418426513672
+Step time: 1.8641002178192139 seconds
+==========>>>>>>Train WER: 1.0
+
+==========>>>>>>Train CER: 0.9366197183098591
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 69.84380340576172
+
+==========>>>>>>Evaluation WER: 1.0
+
+==========>>>>>>Evaluation CER: 0.916030534351145
+
+Evaluation end time : 2019-09-17 17:42:58.000833
+Finished epoch 16 in 17.93956232070923
+Starting epoch 17, step 153
+Start time : 2019-09-17 17:43:01.762450
+Finished epoch 17 in 16.982366800308228
+Starting epoch 18, step 162
+Start time : 2019-09-17 17:43:18.744868
+Finished epoch 18 in 16.996211290359497
+Starting epoch 19, step 171
+Start time : 2019-09-17 17:43:35.741134
+training_batch_WER: 1.0
+Prediction:   요? 
+Reference:  학생 할인 기준이 어떻게 되나요?  
+Loss@Step: 175  ::::::: 87.49478149414062
+Step time: 1.8676962852478027 seconds
+==========>>>>>>Train WER: 1.0
+
+==========>>>>>>Train CER: 0.9122807017543859
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 70.36183166503906
+
+==========>>>>>>Evaluation WER: 1.0
+
+==========>>>>>>Evaluation CER: 0.8931297709923665
+
+Evaluation end time : 2019-09-17 17:43:46.150254
+Finished epoch 19 in 17.79221248626709
+Starting epoch 20, step 180
+Start time : 2019-09-17 17:43:53.533395
+Finished epoch 20 in 16.960359573364258
+Starting epoch 21, step 189
+Start time : 2019-09-17 17:44:10.493807
+Finished epoch 21 in 17.075257539749146
+Starting epoch 22, step 198
+Start time : 2019-09-17 17:44:27.569117
+training_batch_WER: 1.0
+Prediction:  시  요?            
+Reference:  평일이랑 주말이랑 주차시간이 같아요?  
+Loss@Step: 200  ::::::: 66.76677703857422
+Step time: 2.1454107761383057 seconds
+==========>>>>>>Train WER: 1.0
+
+==========>>>>>>Train CER: 0.8698630136986302
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 69.82970428466797
+
+==========>>>>>>Evaluation WER: 1.0
+
+==========>>>>>>Evaluation CER: 0.8778625954198473
+
+Evaluation end time : 2019-09-17 17:44:34.293338
+Finished epoch 22 in 17.959243535995483
+Starting epoch 23, step 207
+Start time : 2019-09-17 17:44:45.528408
+Finished epoch 23 in 17.162721872329712
+Starting epoch 24, step 216
+Start time : 2019-09-17 17:45:02.691181
+Finished epoch 24 in 17.084429502487183
+Starting epoch 25, step 225
+Start time : 2019-09-17 17:45:19.775668
+training_batch_WER: 1.0
+Prediction:   요?  
+Reference:  아기용 음료가 따로 있나요?  
+Loss@Step: 225  ::::::: 68.34661865234375
+Step time: 1.8639030456542969 seconds
+==========>>>>>>Train WER: 1.0
+
+==========>>>>>>Train CER: 0.87248322147651
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 73.16632843017578
+
+==========>>>>>>Evaluation WER: 1.0
+
+==========>>>>>>Evaluation CER: 0.8854961832061069
+
+Evaluation end time : 2019-09-17 17:45:22.483007
+Finished epoch 25 in 17.686373710632324
+Starting epoch 26, step 234
+Start time : 2019-09-17 17:45:37.462136
+Finished epoch 26 in 17.198227882385254
+Starting epoch 27, step 243
+Start time : 2019-09-17 17:45:54.660428
+training_batch_WER: 1.0
+Prediction:  요?                            
+Reference:  한글날에 식사 가능한가요?  
+Loss@Step: 250  ::::::: 58.3824577331543
+Step time: 1.8847317695617676 seconds
+==========>>>>>>Train WER: 1.0
+
+==========>>>>>>Train CER: 0.8778625954198473
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 69.330078125
+
+==========>>>>>>Evaluation WER: 1.0
+
+==========>>>>>>Evaluation CER: 0.8778625954198473
+
+Evaluation end time : 2019-09-17 17:46:10.622543
+Finished epoch 27 in 17.803598403930664
+Starting epoch 28, step 252
+Start time : 2019-09-17 17:46:12.464075
+Finished epoch 28 in 17.06727361679077
+Starting epoch 29, step 261
+Start time : 2019-09-17 17:46:29.531401
+Finished epoch 29 in 17.06848120689392
+Starting epoch 30, step 270
+Start time : 2019-09-17 17:46:46.599939
+training_batch_WER: 1.0
+Prediction:   요?   
+Reference:  평일이랑 주말이랑 주차시간이 같아요?  
+Loss@Step: 275  ::::::: 69.56900787353516
+Step time: 1.8627800941467285 seconds
+==========>>>>>>Train WER: 1.0
+
+==========>>>>>>Train CER: 0.875
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 71.5082015991211
+
+==========>>>>>>Evaluation WER: 1.0
+
+==========>>>>>>Evaluation CER: 0.8625954198473282
+
+Evaluation end time : 2019-09-17 17:46:58.705844
+Finished epoch 30 in 17.49947237968445
+Starting epoch 31, step 279
+Start time : 2019-09-17 17:47:04.099457
+Finished epoch 31 in 17.141931533813477
+Starting epoch 32, step 288
+Start time : 2019-09-17 17:47:21.241441
+Finished epoch 32 in 17.100287675857544
+Starting epoch 33, step 297
+Start time : 2019-09-17 17:47:38.341783
+training_batch_WER: 1.0
+Prediction:   요?         
+Reference:  설날에 영업하나요?  
+Loss@Step: 300  ::::::: 55.96112060546875
+Step time: 1.862736701965332 seconds
+==========>>>>>>Train WER: 1.0
+
+==========>>>>>>Train CER: 0.8115942028985508
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 68.7957534790039
+
+==========>>>>>>Evaluation WER: 1.0
+
+==========>>>>>>Evaluation CER: 0.8320610687022901
+
+Evaluation end time : 2019-09-17 17:47:46.654493
+Finished epoch 33 in 17.936357975006104
+Starting epoch 34, step 306
+Start time : 2019-09-17 17:47:56.278192
+Finished epoch 34 in 17.185922861099243
+Starting epoch 35, step 315
+Start time : 2019-09-17 17:48:13.464166
+Finished epoch 35 in 17.15968894958496
+Starting epoch 36, step 324
+Start time : 2019-09-17 17:48:30.623909
+training_batch_WER: 1.0444444444444445
+Prediction:    요? 
+Reference:  학생할인 대학생도 되나요?  
+Loss@Step: 325  ::::::: 55.963348388671875
+Step time: 2.1496078968048096 seconds
+==========>>>>>>Train WER: 1.0444444444444445
+
+==========>>>>>>Train CER: 0.8428571428571429
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 69.9367446899414
+
+==========>>>>>>Evaluation WER: 1.0
+
+==========>>>>>>Evaluation CER: 0.816793893129771
+
+Evaluation end time : 2019-09-17 17:48:35.506981
+Finished epoch 36 in 17.936262369155884
+Starting epoch 37, step 333
+Start time : 2019-09-17 17:48:48.560220
+Finished epoch 37 in 17.181367874145508
+Starting epoch 38, step 342
+Start time : 2019-09-17 17:49:05.741641
+training_batch_WER: 1.0
+Prediction:  드배폰놓 고놓고 에 가데    있나요? 
+Reference:  아기가 울까봐 걱정되는데 같이가도 괜찮을까요?  
+Loss@Step: 350  ::::::: 67.54439544677734
+Step time: 2.145183801651001 seconds
+==========>>>>>>Train WER: 1.0
+
+==========>>>>>>Train CER: 0.845679012345679
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 72.91838836669922
+
+==========>>>>>>Evaluation WER: 1.0
+
+==========>>>>>>Evaluation CER: 0.7938931297709924
+
+Evaluation end time : 2019-09-17 17:49:23.641852
+Finished epoch 38 in 17.922951459884644
+Starting epoch 39, step 351
+Start time : 2019-09-17 17:49:23.664641
+Finished epoch 39 in 17.030632972717285
+Starting epoch 40, step 360
+Start time : 2019-09-17 17:49:40.695326
+Finished epoch 40 in 16.96828532218933
+Starting epoch 41, step 369
+Start time : 2019-09-17 17:49:57.663666
+training_batch_WER: 1.0227272727272727
+Prediction:  차 시  요?        
+Reference:  보통 주차 시간이 따로 있나요?  
+Loss@Step: 375  ::::::: 49.91048049926758
+Step time: 1.856320858001709 seconds
+==========>>>>>>Train WER: 1.0227272727272727
+
+==========>>>>>>Train CER: 0.7361111111111112
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 69.79426574707031
+
+==========>>>>>>Evaluation WER: 0.9705882352941176
+
+==========>>>>>>Evaluation CER: 0.8091603053435115
+
+Evaluation end time : 2019-09-17 17:50:11.867530
+Finished epoch 41 in 17.959803581237793
+Starting epoch 42, step 378
+Start time : 2019-09-17 17:50:15.623517
+Finished epoch 42 in 17.118032217025757
+Starting epoch 43, step 387
+Start time : 2019-09-17 17:50:32.741602
+Finished epoch 43 in 17.21044635772705
+Starting epoch 44, step 396
+Start time : 2019-09-17 17:50:49.952105
+training_batch_WER: 1.103448275862069
+Prediction:  요?     
+Reference:  자리 있어요?  
+Loss@Step: 400  ::::::: 36.24839401245117
+Step time: 1.7860743999481201 seconds
+==========>>>>>>Train WER: 1.103448275862069
+
+==========>>>>>>Train CER: 0.7870370370370371
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 70.41842651367188
+
+==========>>>>>>Evaluation WER: 0.9705882352941176
+
+==========>>>>>>Evaluation CER: 0.816793893129771
+
+Evaluation end time : 2019-09-17 17:51:00.058505
+Finished epoch 44 in 17.717775583267212
+Starting epoch 45, step 405
+Start time : 2019-09-17 17:51:07.669929
+Finished epoch 45 in 17.177765369415283
+Starting epoch 46, step 414
+Start time : 2019-09-17 17:51:24.847747
+Finished epoch 46 in 17.051008701324463
+Starting epoch 47, step 423
+Start time : 2019-09-17 17:51:41.898812
+training_batch_WER: 0.9591836734693877
+Prediction:  일 일후 예약 가가가요?          
+Reference:  내일 오후 5시 예약할 수 있을까요?  
+Loss@Step: 425  ::::::: 48.60557556152344
+Step time: 1.85858154296875 seconds
+==========>>>>>>Train WER: 0.9591836734693877
+
+==========>>>>>>Train CER: 0.7051282051282052
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 67.59236907958984
+
+==========>>>>>>Evaluation WER: 0.9411764705882353
+
+==========>>>>>>Evaluation CER: 0.7557251908396947
+
+Evaluation end time : 2019-09-17 17:51:48.356901
+Finished epoch 47 in 17.764957189559937
+Starting epoch 48, step 432
+Start time : 2019-09-17 17:51:59.663817
+Finished epoch 48 in 17.185477018356323
+Starting epoch 49, step 441
+Start time : 2019-09-17 17:52:16.849346
+Finished epoch 49 in 16.936150550842285
+Starting epoch 50, step 450
+Start time : 2019-09-17 17:52:33.785552
+training_batch_WER: 1.024390243902439
+Prediction:  수유날 따  요?                             
+Reference:  수유실이 따로 있나요?  
+Loss@Step: 450  ::::::: 44.65325164794922
+Step time: 1.8701646327972412 seconds
+==========>>>>>>Train WER: 1.024390243902439
+
+==========>>>>>>Train CER: 0.7
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 71.47057342529297
+
+==========>>>>>>Evaluation WER: 0.9705882352941176
+
+==========>>>>>>Evaluation CER: 0.7786259541984732
+
+Evaluation end time : 2019-09-17 17:52:36.509513
+Finished epoch 50 in 17.921854257583618
+Starting epoch 51, step 459
+Start time : 2019-09-17 17:52:51.707454
+Finished epoch 51 in 17.19142508506775
+Starting epoch 52, step 468
+Start time : 2019-09-17 17:53:08.898933
+training_batch_WER: 1.027027027027027
+Prediction:  들 시 요                                            
+Reference:  스테이크의 종류들이 궁금해요  
+Loss@Step: 475  ::::::: 42.89106750488281
+Step time: 1.860302448272705 seconds
+==========>>>>>>Train WER: 1.027027027027027
+
+==========>>>>>>Train CER: 0.7555555555555555
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 73.14408111572266
+
+==========>>>>>>Evaluation WER: 0.9705882352941176
+
+==========>>>>>>Evaluation CER: 0.7862595419847328
+
+Evaluation end time : 2019-09-17 17:53:24.751639
+Finished epoch 52 in 17.74410343170166
+Starting epoch 53, step 477
+Start time : 2019-09-17 17:53:26.643084
+Finished epoch 53 in 16.988369703292847
+Starting epoch 54, step 486
+Start time : 2019-09-17 17:53:43.631505
+Finished epoch 54 in 17.01531147956848
+Starting epoch 55, step 495
+Start time : 2019-09-17 17:54:00.646873
+training_batch_WER: 1.0909090909090908
+Prediction:  가치 이 요?      
+Reference:  찾아가는길이 어딘지 자세히좀 알려주세요  
+Loss@Step: 500  ::::::: 46.566036224365234
+Step time: 1.865462064743042 seconds
+==========>>>>>>Train WER: 1.0909090909090908
+
+==========>>>>>>Train CER: 0.6623376623376623
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 71.64680480957031
+
+==========>>>>>>Evaluation WER: 0.9705882352941176
+
+==========>>>>>>Evaluation CER: 0.7862595419847328
+
+Evaluation end time : 2019-09-17 17:54:12.646467
+Finished epoch 55 in 17.909729719161987
+Starting epoch 56, step 504
+Start time : 2019-09-17 17:54:18.556650
+Finished epoch 56 in 17.048315048217773
+Starting epoch 57, step 513
+Start time : 2019-09-17 17:54:35.605020
+Finished epoch 57 in 17.119039058685303
+Starting epoch 58, step 522
+Start time : 2019-09-17 17:54:52.724114
+training_batch_WER: 1.0754716981132075
+Prediction:  일 일후 약하 약 가가요?           
+Reference:  8시에 가려고 하는데 가능한가요?  
+Loss@Step: 525  ::::::: 45.536643981933594
+Step time: 1.8629000186920166 seconds
+==========>>>>>>Train WER: 1.0754716981132075
+
+==========>>>>>>Train CER: 0.68125
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 72.18021392822266
+
+==========>>>>>>Evaluation WER: 0.9705882352941176
+
+==========>>>>>>Evaluation CER: 0.7862595419847328
+
+Evaluation end time : 2019-09-17 17:55:01.316139
+Finished epoch 58 in 17.909396409988403
+Starting epoch 59, step 531
+Start time : 2019-09-17 17:55:10.633560
+Finished epoch 59 in 17.0012047290802
+Starting epoch 60, step 540
+Start time : 2019-09-17 17:55:27.634817
+Finished epoch 60 in 16.93345046043396
+Starting epoch 61, step 549
+Start time : 2019-09-17 17:55:44.568324
+training_batch_WER: 1.0
+Prediction:  추1일날에 도 영업하요?                                         
+Reference:  추석 당일에도 영업하나요?  
+Loss@Step: 550  ::::::: 34.827537536621094
+Step time: 1.8773820400238037 seconds
+==========>>>>>>Train WER: 1.0
+
+==========>>>>>>Train CER: 0.6376811594202898
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 70.8799057006836
+
+==========>>>>>>Evaluation WER: 0.9411764705882353
+
+==========>>>>>>Evaluation CER: 0.7633587786259542
+
+Evaluation end time : 2019-09-17 17:55:49.158208
+Finished epoch 61 in 17.80126142501831
+Starting epoch 62, step 558
+Start time : 2019-09-17 17:56:02.369636
+Finished epoch 62 in 17.161012887954712
+Starting epoch 63, step 567
+Start time : 2019-09-17 17:56:19.530702
+training_batch_WER: 0.9791666666666666
+Prediction:  이   나인요?      
+Reference:  창가 쪽 자리 예약 될까요?  
+Loss@Step: 575  ::::::: 37.635719299316406
+Step time: 1.863215446472168 seconds
+==========>>>>>>Train WER: 0.9791666666666666
+
+==========>>>>>>Train CER: 0.6451612903225806
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 77.20027923583984
+
+==========>>>>>>Evaluation WER: 0.9705882352941176
+
+==========>>>>>>Evaluation CER: 0.8091603053435115
+
+Evaluation end time : 2019-09-17 17:56:37.362786
+Finished epoch 63 in 17.851643562316895
+Starting epoch 64, step 576
+Start time : 2019-09-17 17:56:37.382397
+Finished epoch 64 in 17.027467012405396
+Starting epoch 65, step 585
+Start time : 2019-09-17 17:56:54.409918
+Finished epoch 65 in 16.930248498916626
+Starting epoch 66, step 594
+Start time : 2019-09-17 17:57:11.340224
+training_batch_WER: 0.972972972972973
+Prediction:  유실 예따있나?                             
+Reference:  수유실이 따로 있나요?  
+Loss@Step: 600  ::::::: 23.40984535217285
+Step time: 1.8766913414001465 seconds
+==========>>>>>>Train WER: 0.972972972972973
+
+==========>>>>>>Train CER: 0.4596774193548387
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 74.49237823486328
+
+==========>>>>>>Evaluation WER: 0.9705882352941176
+
+==========>>>>>>Evaluation CER: 0.8091603053435115
+
+Evaluation end time : 2019-09-17 17:57:25.104116
+Finished epoch 66 in 17.801183700561523
+Starting epoch 67, step 603
+Start time : 2019-09-17 17:57:29.141457
+Finished epoch 67 in 17.167587995529175
+Starting epoch 68, step 612
+Start time : 2019-09-17 17:57:46.309097
+Finished epoch 68 in 17.166598081588745
+Starting epoch 69, step 621
+Start time : 2019-09-17 17:58:03.475749
+training_batch_WER: 1.0
+Prediction:  아웃내서에 으하 주 주하 에메 배있한가?       
+Reference:  아웃백 멤버십 쿠폰으로 주문하는 메뉴도 배달 가능한가요?  
+Loss@Step: 625  ::::::: 33.873802185058594
+Step time: 1.8862323760986328 seconds
+==========>>>>>>Train WER: 1.0
+
+==========>>>>>>Train CER: 0.4968152866242038
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 75.19344329833984
+
+==========>>>>>>Evaluation WER: 1.0
+
+==========>>>>>>Evaluation CER: 0.7633587786259542
+
+Evaluation end time : 2019-09-17 17:58:13.331222
+Finished epoch 69 in 17.623454809188843
+Starting epoch 70, step 630
+Start time : 2019-09-17 17:58:21.099252
+Finished epoch 70 in 17.13678216934204
+Starting epoch 71, step 639
+Start time : 2019-09-17 17:58:38.236085
+Finished epoch 71 in 17.113815784454346
+Starting epoch 72, step 648
+Start time : 2019-09-17 17:58:55.349957
+training_batch_WER: 1.0
+Prediction:  일 일 시2 약 하 싶은데요                  
+Reference:  일요일 점심시간 예약하고 싶은데요  
+Loss@Step: 650  ::::::: 30.94980812072754
+Step time: 1.8609931468963623 seconds
+==========>>>>>>Train WER: 1.0
+
+==========>>>>>>Train CER: 0.5579710144927537
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 78.10295867919922
+
+==========>>>>>>Evaluation WER: 1.088235294117647
+
+==========>>>>>>Evaluation CER: 0.816793893129771
+
+Evaluation end time : 2019-09-17 17:59:01.955364
+Finished epoch 72 in 17.769795417785645
+Starting epoch 73, step 657
+Start time : 2019-09-17 17:59:13.119801
+Finished epoch 73 in 17.030879735946655
+Starting epoch 74, step 666
+Start time : 2019-09-17 17:59:30.150734
+Finished epoch 74 in 17.157332181930542
+Starting epoch 75, step 675
+Start time : 2019-09-17 17:59:47.308119
+training_batch_WER: 0.9
+Prediction:  1석일날일에도 영업하요?                         
+Reference:  추석 당일에도 영업하나요?  
+Loss@Step: 675  ::::::: 21.11609649658203
+Step time: 1.6481068134307861 seconds
+==========>>>>>>Train WER: 0.9
+
+==========>>>>>>Train CER: 0.38235294117647056
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 81.69164276123047
+
+==========>>>>>>Evaluation WER: 1.088235294117647
+
+==========>>>>>>Evaluation CER: 0.7786259541984732
+
+Evaluation end time : 2019-09-17 17:59:49.790468
+Finished epoch 75 in 17.623365879058838
+Starting epoch 76, step 684
+Start time : 2019-09-17 18:00:04.931534
+Finished epoch 76 in 17.005831003189087
+Starting epoch 77, step 693
+Start time : 2019-09-17 18:00:21.937418
+training_batch_WER: 1.0888888888888888
+Prediction:  스테타이타 어떤어떤 들이있나요?                   
+Reference:  파스타는 어떤 것들이 있나요?  
+Loss@Step: 700  ::::::: 28.496129989624023
+Step time: 1.8593170642852783 seconds
+==========>>>>>>Train WER: 1.0888888888888888
+
+==========>>>>>>Train CER: 0.48366013071895425
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 76.76158142089844
+
+==========>>>>>>Evaluation WER: 1.0588235294117647
+
+==========>>>>>>Evaluation CER: 0.7709923664122137
+
+Evaluation end time : 2019-09-17 18:00:37.522503
+Finished epoch 77 in 17.763466358184814
+Starting epoch 78, step 702
+Start time : 2019-09-17 18:00:39.700934
+Finished epoch 78 in 17.04371428489685
+Starting epoch 79, step 711
+Start time : 2019-09-17 18:00:56.744700
+Finished epoch 79 in 17.096686124801636
+Starting epoch 80, step 720
+Start time : 2019-09-17 18:01:13.841442
+training_batch_WER: 0.9130434782608695
+Prediction:  메 나를있아 그려는로눠서 주 실 있나?   
+Reference:  메뉴 하나를 아기 그릇에 따로나눠서 담아 주실 수 있나요?  
+Loss@Step: 725  ::::::: 21.30354881286621
+Step time: 1.8599987030029297 seconds
+==========>>>>>>Train WER: 0.9130434782608695
+
+==========>>>>>>Train CER: 0.3888888888888889
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 80.20777893066406
+
+==========>>>>>>Evaluation WER: 1.0
+
+==========>>>>>>Evaluation CER: 0.7786259541984732
+
+Evaluation end time : 2019-09-17 18:01:25.960624
+Finished epoch 80 in 17.649734497070312
+Starting epoch 81, step 729
+Start time : 2019-09-17 18:01:31.491225
+Finished epoch 81 in 17.158467292785645
+Starting epoch 82, step 738
+Start time : 2019-09-17 18:01:48.649745
+Finished epoch 82 in 16.995988130569458
+Starting epoch 83, step 747
+Start time : 2019-09-17 18:02:05.645790
+training_batch_WER: 1.065217391304348
+Prediction:  예 예 소때 문전달화 드렸니         
+Reference:  예약 취소 때문에 전화드렸습니다  
+Loss@Step: 750  ::::::: 23.645214080810547
+Step time: 1.8609516620635986 seconds
+==========>>>>>>Train WER: 1.065217391304348
+
+==========>>>>>>Train CER: 0.37037037037037035
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 85.94892883300781
+
+==========>>>>>>Evaluation WER: 1.0588235294117647
+
+==========>>>>>>Evaluation CER: 0.8320610687022901
+
+Evaluation end time : 2019-09-17 18:02:13.982838
+Finished epoch 83 in 17.947914838790894
+Starting epoch 84, step 756
+Start time : 2019-09-17 18:02:23.593753
+Finished epoch 84 in 16.99808669090271
+Starting epoch 85, step 765
+Start time : 2019-09-17 18:02:40.591893
+Finished epoch 85 in 16.847368717193604
+Starting epoch 86, step 774
+Start time : 2019-09-17 18:02:57.439316
+training_batch_WER: 0.9574468085106383
+Prediction:  내일 일후 5 시 약 가 을능을가요?              
+Reference:  내일 오후 5시 예약할 수 있을까요?  
+Loss@Step: 775  ::::::: 23.309680938720703
+Step time: 1.8596124649047852 seconds
+==========>>>>>>Train WER: 0.9574468085106383
+
+==========>>>>>>Train CER: 0.4129032258064516
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 86.9292221069336
+
+==========>>>>>>Evaluation WER: 1.0588235294117647
+
+==========>>>>>>Evaluation CER: 0.8091603053435115
+
+Evaluation end time : 2019-09-17 18:03:01.886980
+Finished epoch 86 in 17.63062357902527
+Starting epoch 87, step 783
+Start time : 2019-09-17 18:03:15.069987
+Finished epoch 87 in 17.159394025802612
+Starting epoch 88, step 792
+Start time : 2019-09-17 18:03:32.229431
+training_batch_WER: 0.6511627906976745
+Prediction:  크스날 영가업하업하나요?                                          
+Reference:  크리스마스날 영업하나요?  
+Loss@Step: 800  ::::::: 12.655679702758789
+Step time: 1.8571255207061768 seconds
+==========>>>>>>Train WER: 0.6511627906976745
+
+==========>>>>>>Train CER: 0.23943661971830985
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 89.83366394042969
+
+==========>>>>>>Evaluation WER: 1.2058823529411764
+
+==========>>>>>>Evaluation CER: 0.8091603053435115
+
+Evaluation end time : 2019-09-17 18:03:50.030661
+Finished epoch 88 in 17.82355284690857
+Starting epoch 89, step 801
+Start time : 2019-09-17 18:03:50.053034
+Finished epoch 89 in 17.092967748641968
+Starting epoch 90, step 810
+Start time : 2019-09-17 18:04:07.146055
+Finished epoch 90 in 16.9837486743927
+Starting epoch 91, step 819
+Start time : 2019-09-17 18:04:24.129861
+training_batch_WER: 0.8372093023255814
+Prediction:  25 단체예약 가능한가요?                 
+Reference:  25명 단체도 예약 가능한가요?  
+Loss@Step: 825  ::::::: 16.737510681152344
+Step time: 1.855506181716919 seconds
+==========>>>>>>Train WER: 0.8372093023255814
+
+==========>>>>>>Train CER: 0.2905405405405405
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 87.42803955078125
+
+==========>>>>>>Evaluation WER: 1.088235294117647
+
+==========>>>>>>Evaluation CER: 0.8091603053435115
+
+Evaluation end time : 2019-09-17 18:04:37.892735
+Finished epoch 91 in 17.781603813171387
+Starting epoch 92, step 828
+Start time : 2019-09-17 18:04:41.911513
+Finished epoch 92 in 16.90195393562317
+Starting epoch 93, step 837
+Start time : 2019-09-17 18:04:58.813518
+Finished epoch 93 in 17.20690369606018
+Starting epoch 94, step 846
+Start time : 2019-09-17 18:05:16.020477
+training_batch_WER: 0.875
+Prediction:   전 가 떻데 주에 아 전 역한 나요?  
+Reference:  전철 타고 가려고 하는데 주변에 전철역이 있나요?  
+Loss@Step: 850  ::::::: 15.47521686553955
+Step time: 1.8497278690338135 seconds
+==========>>>>>>Train WER: 0.875
+
+==========>>>>>>Train CER: 0.291044776119403
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 92.8473129272461
+
+==========>>>>>>Evaluation WER: 1.1764705882352942
+
+==========>>>>>>Evaluation CER: 0.8015267175572519
+
+Evaluation end time : 2019-09-17 18:05:25.718359
+Finished epoch 94 in 17.472892999649048
+Starting epoch 95, step 855
+Start time : 2019-09-17 18:05:33.493419
+Finished epoch 95 in 16.871622323989868
+Starting epoch 96, step 864
+Start time : 2019-09-17 18:05:50.365093
+Finished epoch 96 in 17.023316144943237
+Starting epoch 97, step 873
+Start time : 2019-09-17 18:06:07.388463
+training_batch_WER: 0.8478260869565217
+Prediction:  아기용 숟락 랑포 포준비 되죠?  
+Reference:  아기용  숟가락이랑 포크 준비 되죠?  
+Loss@Step: 875  ::::::: 19.631208419799805
+Step time: 1.8585100173950195 seconds
+==========>>>>>>Train WER: 0.8478260869565217
+
+==========>>>>>>Train CER: 0.34415584415584416
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 88.3853988647461
+
+==========>>>>>>Evaluation WER: 1.1764705882352942
+
+==========>>>>>>Evaluation CER: 0.816793893129771
+
+Evaluation end time : 2019-09-17 18:06:13.822805
+Finished epoch 97 in 17.917505025863647
+Starting epoch 98, step 882
+Start time : 2019-09-17 18:06:25.306016
+Finished epoch 98 in 16.824249982833862
+Starting epoch 99, step 891
+Start time : 2019-09-17 18:06:42.130318
+Finished epoch 99 in 16.921022653579712
+Saving module Jasper in /home/neoadmin/stt/Jasper/results/Jasper_1568711219.0513952-epoch-100.pt
+Saved.
+Starting epoch 100, step 900
+Start time : 2019-09-17 18:07:01.215517
+training_batch_WER: 0.6341463414634146
+Prediction:  연세 수저 어독하이들이 먹을만한 메뉴줄가 있나요?                     
+Reference:  연세 있으신 어른들이 먹을만한 메뉴가 있나요?  
+Loss@Step: 900  ::::::: 10.913052558898926
+Step time: 1.851161241531372 seconds
+==========>>>>>>Train WER: 0.6341463414634146
+
+==========>>>>>>Train CER: 0.21481481481481482
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 87.63082885742188
+
+==========>>>>>>Evaluation WER: 1.1470588235294117
+
+==========>>>>>>Evaluation CER: 0.8320610687022901
+
+Evaluation end time : 2019-09-17 18:07:03.913901
+Finished epoch 100 in 17.764896154403687
+Starting epoch 101, step 909
+Start time : 2019-09-17 18:07:18.980466
+Finished epoch 101 in 17.084249019622803
+Starting epoch 102, step 918
+Start time : 2019-09-17 18:07:36.064768
+training_batch_WER: 0.6190476190476191
+Prediction:  아가 가울 봐 정되는 같이가도괜찮을까요?  
+Reference:  아기가 울까봐 걱정되는데 같이가도 괜찮을까요?  
+Loss@Step: 925  ::::::: 11.244338989257812
+Step time: 1.8598244190216064 seconds
+==========>>>>>>Train WER: 0.6190476190476191
+
+==========>>>>>>Train CER: 0.15862068965517243
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 96.46065521240234
+
+==========>>>>>>Evaluation WER: 1.1176470588235294
+
+==========>>>>>>Evaluation CER: 0.816793893129771
+
+Evaluation end time : 2019-09-17 18:07:52.119293
+Finished epoch 102 in 17.928454160690308
+Starting epoch 103, step 927
+Start time : 2019-09-17 18:07:53.993270
+Finished epoch 103 in 17.026750087738037
+Starting epoch 104, step 936
+Start time : 2019-09-17 18:08:11.020073
+Finished epoch 104 in 17.039926052093506
+Starting epoch 105, step 945
+Start time : 2019-09-17 18:08:28.060054
+training_batch_WER: 0.7560975609756098
+Prediction:  25명 단2체도예약 가능능한가요?    
+Reference:  25명 단체도 예약 가능한가요?  
+Loss@Step: 950  ::::::: 8.992788314819336
+Step time: 2.150686502456665 seconds
+==========>>>>>>Train WER: 0.7560975609756098
+
+==========>>>>>>Train CER: 0.18705035971223022
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 97.2527084350586
+
+==========>>>>>>Evaluation WER: 1.1764705882352942
+
+==========>>>>>>Evaluation CER: 0.816793893129771
+
+Evaluation end time : 2019-09-17 18:08:40.229406
+Finished epoch 105 in 17.707624673843384
+Starting epoch 106, step 954
+Start time : 2019-09-17 18:08:45.767728
+Finished epoch 106 in 17.01949954032898
+Starting epoch 107, step 963
+Start time : 2019-09-17 18:09:02.787280
+Finished epoch 107 in 17.028797388076782
+Starting epoch 108, step 972
+Start time : 2019-09-17 18:09:19.816133
+training_batch_WER: 0.8679245283018868
+Prediction:  명동점에가고 는데명동역이몇 출구로나마와야 되나요요   
+Reference:  명동점에 가려고 하는데 명동역 몇 번 출구로 나와야 되나요?  
+Loss@Step: 975  ::::::: 15.61704158782959
+Step time: 1.8921656608581543 seconds
+==========>>>>>>Train WER: 0.8679245283018868
+
+==========>>>>>>Train CER: 0.2619047619047619
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 93.92134094238281
+
+==========>>>>>>Evaluation WER: 1.1470588235294117
+
+==========>>>>>>Evaluation CER: 0.8091603053435115
+
+Evaluation end time : 2019-09-17 18:09:28.431059
+Finished epoch 108 in 17.830564975738525
+Starting epoch 109, step 981
+Start time : 2019-09-17 18:09:37.646747
+Finished epoch 109 in 17.1948881149292
+Starting epoch 110, step 990
+Start time : 2019-09-17 18:09:54.841686
+Finished epoch 110 in 17.010627031326294
+Starting epoch 111, step 999
+Start time : 2019-09-17 18:10:11.852367
+training_batch_WER: 0.803921568627451
+Prediction:  창창가 쪽 자리 어예약 될인요?               
+Reference:  창가 쪽 자리 예약 될까요?  
+Loss@Step: 1000  ::::::: 13.481674194335938
+Step time: 1.8618290424346924 seconds
+==========>>>>>>Train WER: 0.803921568627451
+
+==========>>>>>>Train CER: 0.21019108280254778
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 93.7824935913086
+
+==========>>>>>>Evaluation WER: 1.1176470588235294
+
+==========>>>>>>Evaluation CER: 0.816793893129771
+
+Evaluation end time : 2019-09-17 18:10:16.459344
+Finished epoch 111 in 17.954275846481323
+Starting epoch 112, step 1008
+Start time : 2019-09-17 18:10:29.806692
+Finished epoch 112 in 16.993290185928345
+Starting epoch 113, step 1017
+Start time : 2019-09-17 18:10:46.800036
+training_batch_WER: 0.65
+Prediction:  예 고싶습 다          
+Reference:  예약 하고싶습니다  
+Loss@Step: 1025  ::::::: 11.23437786102295
+Step time: 1.858567476272583 seconds
+==========>>>>>>Train WER: 0.65
+
+==========>>>>>>Train CER: 0.23703703703703705
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 96.32086181640625
+
+==========>>>>>>Evaluation WER: 1.1470588235294117
+
+==========>>>>>>Evaluation CER: 0.816793893129771
+
+Evaluation end time : 2019-09-17 18:11:04.614823
+Finished epoch 113 in 17.835519075393677
+Starting epoch 114, step 1026
+Start time : 2019-09-17 18:11:04.635605
+Finished epoch 114 in 17.105913877487183
+Starting epoch 115, step 1035
+Start time : 2019-09-17 18:11:21.741571
+Finished epoch 115 in 16.839580297470093
+Starting epoch 116, step 1044
+Start time : 2019-09-17 18:11:38.581208
+training_batch_WER: 0.7674418604651163
+Prediction:  이번 토요일 12시 약하 가능한가요?          
+Reference:  이번 토요일 12시에 예약 가능한가요?  
+Loss@Step: 1050  ::::::: 11.293971061706543
+Step time: 1.6477992534637451 seconds
+==========>>>>>>Train WER: 0.7674418604651163
+
+==========>>>>>>Train CER: 0.2
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 97.03299713134766
+
+==========>>>>>>Evaluation WER: 1.1470588235294117
+
+==========>>>>>>Evaluation CER: 0.8244274809160306
+
+Evaluation end time : 2019-09-17 18:11:52.433619
+Finished epoch 116 in 17.594219207763672
+Starting epoch 117, step 1053
+Start time : 2019-09-17 18:11:56.175477
+Finished epoch 117 in 16.900960445404053
+Starting epoch 118, step 1062
+Start time : 2019-09-17 18:12:13.076490
+Finished epoch 118 in 17.162517309188843
+Starting epoch 119, step 1071
+Start time : 2019-09-17 18:12:30.239063
+training_batch_WER: 0.5813953488372093
+Prediction:  메 하나를 기 에 고 따나서 담아 주실 수 있나?  
+Reference:  메뉴 하나를 아기 그릇에 따로나눠서 담아 주실 수 있나요?  
+Loss@Step: 1075  ::::::: 9.246230125427246
+Step time: 1.8598897457122803 seconds
+==========>>>>>>Train WER: 0.5813953488372093
+
+==========>>>>>>Train CER: 0.19858156028368795
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 98.29788970947266
+
+==========>>>>>>Evaluation WER: 1.2058823529411764
+
+==========>>>>>>Evaluation CER: 0.8015267175572519
+
+Evaluation end time : 2019-09-17 18:12:40.183197
+Finished epoch 119 in 17.731743335723877
+Starting epoch 120, step 1080
+Start time : 2019-09-17 18:12:47.970855
+Finished epoch 120 in 17.115190267562866
+Starting epoch 121, step 1089
+Start time : 2019-09-17 18:13:05.086125
+Finished epoch 121 in 17.047645330429077
+Starting epoch 122, step 1098
+Start time : 2019-09-17 18:13:22.133838
+training_batch_WER: 0.6938775510204082
+Prediction:  보 차 몇 이 따로 있나요?      
+Reference:  보통 주차 시간이 따로 있나요?  
+Loss@Step: 1100  ::::::: 10.573698997497559
+Step time: 1.7897121906280518 seconds
+==========>>>>>>Train WER: 0.6938775510204082
+
+==========>>>>>>Train CER: 0.20863309352517986
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 98.64293670654297
+
+==========>>>>>>Evaluation WER: 1.1764705882352942
+
+==========>>>>>>Evaluation CER: 0.7862595419847328
+
+Evaluation end time : 2019-09-17 18:13:28.786833
+Finished epoch 122 in 17.793581008911133
+Starting epoch 123, step 1107
+Start time : 2019-09-17 18:13:39.927469
+Finished epoch 123 in 17.160388946533203
+Starting epoch 124, step 1116
+Start time : 2019-09-17 18:13:57.087911
+Finished epoch 124 in 16.994911670684814
+Starting epoch 125, step 1125
+Start time : 2019-09-17 18:14:14.082878
+training_batch_WER: 0.6444444444444445
+Prediction:  지하 고갈 있 있 방법을알려세요  
+Reference:  지하철 타고 갈 수 있는 방법을 알려주세요  
+Loss@Step: 1125  ::::::: 8.194982528686523
+Step time: 1.861518383026123 seconds
+==========>>>>>>Train WER: 0.6444444444444445
+
+==========>>>>>>Train CER: 0.2097902097902098
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 104.5419921875
+
+==========>>>>>>Evaluation WER: 1.2352941176470589
+
+==========>>>>>>Evaluation CER: 0.8396946564885496
+
+Evaluation end time : 2019-09-17 18:14:16.803360
+Finished epoch 125 in 17.708224058151245
+Starting epoch 126, step 1134
+Start time : 2019-09-17 18:14:31.791151
+Finished epoch 126 in 17.107312202453613
+Starting epoch 127, step 1143
+Start time : 2019-09-17 18:14:48.898514
+training_batch_WER: 0.4722222222222222
+Prediction:  1월1일에 영업하나요?   
+Reference:  1월1일에 영업하나요?  
+Loss@Step: 1150  ::::::: 7.29506254196167
+Step time: 1.7840359210968018 seconds
+==========>>>>>>Train WER: 0.4722222222222222
+
+==========>>>>>>Train CER: 0.16901408450704225
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 105.37764739990234
+
+==========>>>>>>Evaluation WER: 1.1764705882352942
+
+==========>>>>>>Evaluation CER: 0.816793893129771
+
+Evaluation end time : 2019-09-17 18:15:04.785643
+Finished epoch 127 in 17.77051329612732
+Starting epoch 128, step 1152
+Start time : 2019-09-17 18:15:06.669076
+Finished epoch 128 in 17.117316484451294
+Starting epoch 129, step 1161
+Start time : 2019-09-17 18:15:23.786445
+Finished epoch 129 in 17.15708827972412
+Starting epoch 130, step 1170
+Start time : 2019-09-17 18:15:40.943589
+training_batch_WER: 0.673469387755102
+Prediction:  크리스날 영업나요?                                               
+Reference:  크리스마스날 영업하나요?  
+Loss@Step: 1175  ::::::: 10.080050468444824
+Step time: 2.1467607021331787 seconds
+==========>>>>>>Train WER: 0.673469387755102
+
+==========>>>>>>Train CER: 0.19333333333333333
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 117.47021484375
+
+==========>>>>>>Evaluation WER: 1.1764705882352942
+
+==========>>>>>>Evaluation CER: 0.8702290076335878
+
+Evaluation end time : 2019-09-17 18:15:53.201634
+Finished epoch 130 in 17.862886667251587
+Starting epoch 131, step 1179
+Start time : 2019-09-17 18:15:58.806524
+Finished epoch 131 in 17.179478883743286
+Starting epoch 132, step 1188
+Start time : 2019-09-17 18:16:15.986057
+Finished epoch 132 in 16.984797477722168
+Starting epoch 133, step 1197
+Start time : 2019-09-17 18:16:32.970910
+training_batch_WER: 0.5918367346938775
+Prediction:  버역서에 내려서 어떻게 찾아가죠 ?            
+Reference:  버스에서 내려서 어떻게 찾아가죠?  
+Loss@Step: 1200  ::::::: 11.15576457977295
+Step time: 1.8586292266845703 seconds
+==========>>>>>>Train WER: 0.5918367346938775
+
+==========>>>>>>Train CER: 0.18831168831168832
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 105.70223236083984
+
+==========>>>>>>Evaluation WER: 1.2058823529411764
+
+==========>>>>>>Evaluation CER: 0.8320610687022901
+
+Evaluation end time : 2019-09-17 18:16:41.242890
+Finished epoch 133 in 17.92179274559021
+Starting epoch 134, step 1206
+Start time : 2019-09-17 18:16:50.892751
+Finished epoch 134 in 16.886484622955322
+Starting epoch 135, step 1215
+Start time : 2019-09-17 18:17:07.779287
+Finished epoch 135 in 17.087541103363037
+Starting epoch 136, step 1224
+Start time : 2019-09-17 18:17:24.866885
+training_batch_WER: 0.34146341463414637
+Prediction:  주차는 몇시간까지 가능한가요?    
+Reference:  주차는 몇시간까지 가능한가요?  
+Loss@Step: 1225  ::::::: 7.818803310394287
+Step time: 1.7840158939361572 seconds
+==========>>>>>>Train WER: 0.34146341463414637
+
+==========>>>>>>Train CER: 0.10416666666666667
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 106.28453826904297
+
+==========>>>>>>Evaluation WER: 1.2352941176470589
+
+==========>>>>>>Evaluation CER: 0.8549618320610687
+
+Evaluation end time : 2019-09-17 18:17:29.379811
+Finished epoch 136 in 17.865634202957153
+Starting epoch 137, step 1233
+Start time : 2019-09-17 18:17:42.732568
+Finished epoch 137 in 17.16776704788208
+Starting epoch 138, step 1242
+Start time : 2019-09-17 18:17:59.900388
+training_batch_WER: 0.38
+Prediction:  핸드폰을 고 갔는데 혹시 보셨나요?  
+Reference:  핸드폰을 놓고 갔는데 혹시 보셨나요?  
+Loss@Step: 1250  ::::::: 6.537397861480713
+Step time: 1.8643603324890137 seconds
+==========>>>>>>Train WER: 0.38
+
+==========>>>>>>Train CER: 0.11377245508982035
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 112.8676986694336
+
+==========>>>>>>Evaluation WER: 1.1764705882352942
+
+==========>>>>>>Evaluation CER: 0.8244274809160306
+
+Evaluation end time : 2019-09-17 18:18:17.792104
+Finished epoch 138 in 17.913749933242798
+Starting epoch 139, step 1251
+Start time : 2019-09-17 18:18:17.814190
+Finished epoch 139 in 17.116759777069092
+Starting epoch 140, step 1260
+Start time : 2019-09-17 18:18:34.931001
+Finished epoch 140 in 17.11429262161255
+Starting epoch 141, step 1269
+Start time : 2019-09-17 18:18:52.045348
+training_batch_WER: 0.5869565217391305
+Prediction:  크리스에도 있해해요?                                          
+Reference:  크리스마스에도 해요?  
+Loss@Step: 1275  ::::::: 7.917819976806641
+Step time: 1.8619532585144043 seconds
+==========>>>>>>Train WER: 0.5869565217391305
+
+==========>>>>>>Train CER: 0.2080536912751678
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 108.8316879272461
+
+==========>>>>>>Evaluation WER: 1.1764705882352942
+
+==========>>>>>>Evaluation CER: 0.8091603053435115
+
+Evaluation end time : 2019-09-17 18:19:05.713912
+Finished epoch 141 in 17.69900608062744
+Starting epoch 142, step 1278
+Start time : 2019-09-17 18:19:09.744401
+Finished epoch 142 in 16.82620143890381
+Starting epoch 143, step 1287
+Start time : 2019-09-17 18:19:26.570656
+Finished epoch 143 in 16.972651720046997
+Starting epoch 144, step 1296
+Start time : 2019-09-17 18:19:43.543363
+training_batch_WER: 0.30434782608695654
+Prediction:  평일이랑 주말이 주차시간이 같아요?    
+Reference:  평일이랑 주말이랑 주차시간이 같아요?  
+Loss@Step: 1300  ::::::: 4.948442459106445
+Step time: 1.890357255935669 seconds
+==========>>>>>>Train WER: 0.30434782608695654
+
+==========>>>>>>Train CER: 0.09090909090909091
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 113.09941864013672
+
+==========>>>>>>Evaluation WER: 1.2352941176470589
+
+==========>>>>>>Evaluation CER: 0.7938931297709924
+
+Evaluation end time : 2019-09-17 18:19:53.898637
+Finished epoch 144 in 17.82497525215149
+Starting epoch 145, step 1305
+Start time : 2019-09-17 18:20:01.368387
+Finished epoch 145 in 17.197303771972656
+Starting epoch 146, step 1314
+Start time : 2019-09-17 18:20:18.565745
+Finished epoch 146 in 16.972501039505005
+Starting epoch 147, step 1323
+Start time : 2019-09-17 18:20:35.538301
+training_batch_WER: 0.41304347826086957
+Prediction:  서울대 입구에있 가까운 곳에 있나요?          
+Reference:  서울대 입구역에서 가까운 곳에 있나요?  
+Loss@Step: 1325  ::::::: 7.008304119110107
+Step time: 1.864119052886963 seconds
+==========>>>>>>Train WER: 0.41304347826086957
+
+==========>>>>>>Train CER: 0.1232876712328767
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 112.23955535888672
+
+==========>>>>>>Evaluation WER: 1.2058823529411764
+
+==========>>>>>>Evaluation CER: 0.8091603053435115
+
+Evaluation end time : 2019-09-17 18:20:41.974620
+Finished epoch 147 in 17.889078378677368
+Starting epoch 148, step 1332
+Start time : 2019-09-17 18:20:53.427427
+Finished epoch 148 in 17.001962423324585
+Starting epoch 149, step 1341
+Start time : 2019-09-17 18:21:10.429442
+Finished epoch 149 in 16.97397756576538
+Starting epoch 150, step 1350
+Start time : 2019-09-17 18:21:27.403476
+training_batch_WER: 0.391304347826087
+Prediction:  가장 많이 예달되는 음식은 무엇인까가요        
+Reference:  가장 많이 배달되는 음식은 무엇인가요?  
+Loss@Step: 1350  ::::::: 4.765119552612305
+Step time: 1.8704092502593994 seconds
+==========>>>>>>Train WER: 0.391304347826087
+
+==========>>>>>>Train CER: 0.09803921568627451
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 113.68232727050781
+
+==========>>>>>>Evaluation WER: 1.1764705882352942
+
+==========>>>>>>Evaluation CER: 0.8244274809160306
+
+Evaluation end time : 2019-09-17 18:21:30.126958
+Finished epoch 150 in 17.757455587387085
+Starting epoch 151, step 1359
+Start time : 2019-09-17 18:21:45.160980
+Finished epoch 151 in 17.16563057899475
+Starting epoch 152, step 1368
+Start time : 2019-09-17 18:22:02.326664
+training_batch_WER: 0.3409090909090909
+Prediction:  영업 시간이어떻게 됩니까?      
+Reference:  영업 시간이 어떻게 됩니까?  
+Loss@Step: 1375  ::::::: 4.777820110321045
+Step time: 1.8783354759216309 seconds
+==========>>>>>>Train WER: 0.3409090909090909
+
+==========>>>>>>Train CER: 0.08029197080291971
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 119.5769271850586
+
+==========>>>>>>Evaluation WER: 1.2058823529411764
+
+==========>>>>>>Evaluation CER: 0.8473282442748091
+
+Evaluation end time : 2019-09-17 18:22:18.378489
+Finished epoch 152 in 17.939342975616455
+Starting epoch 153, step 1377
+Start time : 2019-09-17 18:22:20.266055
+Finished epoch 153 in 17.01658272743225
+Starting epoch 154, step 1386
+Start time : 2019-09-17 18:22:37.282689
+Finished epoch 154 in 17.05169105529785
+Starting epoch 155, step 1395
+Start time : 2019-09-17 18:22:54.334436
+training_batch_WER: 0.5
+Prediction:  내일 예약고싶어요         
+Reference:  내일 예약하고싶어요  
+Loss@Step: 1400  ::::::: 6.171397686004639
+Step time: 1.8588275909423828 seconds
+==========>>>>>>Train WER: 0.5
+
+==========>>>>>>Train CER: 0.11347517730496454
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 117.33833312988281
+
+==========>>>>>>Evaluation WER: 1.1764705882352942
+
+==========>>>>>>Evaluation CER: 0.8320610687022901
+
+Evaluation end time : 2019-09-17 18:23:06.369283
+Finished epoch 155 in 17.92755126953125
+Starting epoch 156, step 1404
+Start time : 2019-09-17 18:23:12.262035
+Finished epoch 156 in 17.168637990951538
+Starting epoch 157, step 1413
+Start time : 2019-09-17 18:23:29.430726
+Finished epoch 157 in 17.12702512741089
+Starting epoch 158, step 1422
+Start time : 2019-09-17 18:23:46.557807
+training_batch_WER: 0.5106382978723404
+Prediction:  20명 들어갈 자리 있나요?          
+Reference:  20명 들어갈 자리 있나요?  
+Loss@Step: 1425  ::::::: 8.32418155670166
+Step time: 1.8628642559051514 seconds
+==========>>>>>>Train WER: 0.5106382978723404
+
+==========>>>>>>Train CER: 0.14285714285714285
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 115.00450897216797
+
+==========>>>>>>Evaluation WER: 1.1176470588235294
+
+==========>>>>>>Evaluation CER: 0.8549618320610687
+
+Evaluation end time : 2019-09-17 18:23:55.163955
+Finished epoch 158 in 17.792409658432007
+Starting epoch 159, step 1431
+Start time : 2019-09-17 18:24:04.350265
+Finished epoch 159 in 16.976462841033936
+Starting epoch 160, step 1440
+Start time : 2019-09-17 18:24:21.326779
+Finished epoch 160 in 17.1891987323761
+Starting epoch 161, step 1449
+Start time : 2019-09-17 18:24:38.516032
+training_batch_WER: 0.34782608695652173
+Prediction:  음료도 배달이 가능한가요?                      
+Reference:  음료도 배달이 가능한가요?  
+Loss@Step: 1450  ::::::: 5.79245138168335
+Step time: 1.8588881492614746 seconds
+==========>>>>>>Train WER: 0.34782608695652173
+
+==========>>>>>>Train CER: 0.10897435897435898
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 120.29243469238281
+
+==========>>>>>>Evaluation WER: 1.2058823529411764
+
+==========>>>>>>Evaluation CER: 0.8854961832061069
+
+Evaluation end time : 2019-09-17 18:24:43.092947
+Finished epoch 161 in 17.80479669570923
+Starting epoch 162, step 1458
+Start time : 2019-09-17 18:24:56.320878
+Finished epoch 162 in 17.017446756362915
+Starting epoch 163, step 1467
+Start time : 2019-09-17 18:25:13.338376
+training_batch_WER: 0.46808510638297873
+Prediction:  파가스타는 어떤 것들이 있나요?                                    
+Reference:  파스타는 어떤 것들이 있나요?  
+Loss@Step: 1475  ::::::: 5.9571661949157715
+Step time: 1.8627803325653076 seconds
+==========>>>>>>Train WER: 0.46808510638297873
+
+==========>>>>>>Train CER: 0.0975609756097561
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 122.1322021484375
+
+==========>>>>>>Evaluation WER: 1.1764705882352942
+
+==========>>>>>>Evaluation CER: 0.8549618320610687
+
+Evaluation end time : 2019-09-17 18:25:31.213596
+Finished epoch 163 in 17.897305488586426
+Starting epoch 164, step 1476
+Start time : 2019-09-17 18:25:31.235730
+Finished epoch 164 in 17.165119171142578
+Starting epoch 165, step 1485
+Start time : 2019-09-17 18:25:48.400902
+Finished epoch 165 in 17.160537719726562
+Starting epoch 166, step 1494
+Start time : 2019-09-17 18:26:05.561497
+training_batch_WER: 0.21739130434782608
+Prediction:  몇살부터 몇살까지가 학생할인을 받을수 있나요?   
+Reference:  몇살부터 몇살까지가 학생할인을 받을수 있나요?  
+Loss@Step: 1500  ::::::: 3.548459768295288
+Step time: 1.8501861095428467 seconds
+==========>>>>>>Train WER: 0.21739130434782608
+
+==========>>>>>>Train CER: 0.056962025316455694
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 123.5258560180664
+
+==========>>>>>>Evaluation WER: 1.1470588235294117
+
+==========>>>>>>Evaluation CER: 0.816793893129771
+
+Evaluation end time : 2019-09-17 18:26:19.594772
+Finished epoch 166 in 17.812342405319214
+Starting epoch 167, step 1503
+Start time : 2019-09-17 18:26:23.373887
+Finished epoch 167 in 16.910483837127686
+Starting epoch 168, step 1512
+Start time : 2019-09-17 18:26:40.284424
+Finished epoch 168 in 17.168980360031128
+Starting epoch 169, step 1521
+Start time : 2019-09-17 18:26:57.453460
+training_batch_WER: 0.21621621621621623
+Prediction:  다른 곳으로 이전할 것인가요?       는 
+Reference:  다른 곳으로 이전할 것인가요?  
+Loss@Step: 1525  ::::::: 2.0840046405792236
+Step time: 1.852614164352417 seconds
+==========>>>>>>Train WER: 0.21621621621621623
+
+==========>>>>>>Train CER: 0.06349206349206349
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 116.98430633544922
+
+==========>>>>>>Evaluation WER: 1.1470588235294117
+
+==========>>>>>>Evaluation CER: 0.8244274809160306
+
+Evaluation end time : 2019-09-17 18:27:07.628515
+Finished epoch 169 in 17.73427939414978
+Starting epoch 170, step 1530
+Start time : 2019-09-17 18:27:15.187788
+Finished epoch 170 in 17.159400939941406
+Starting epoch 171, step 1539
+Start time : 2019-09-17 18:27:32.347240
+Finished epoch 171 in 17.140393018722534
+Starting epoch 172, step 1548
+Start time : 2019-09-17 18:27:49.487689
+training_batch_WER: 0.5306122448979592
+Prediction:  폭립 배달 가능한가요?                 
+Reference:  폭립 배달 가능한가요?  
+Loss@Step: 1550  ::::::: 5.730886459350586
+Step time: 1.8634147644042969 seconds
+==========>>>>>>Train WER: 0.5306122448979592
+
+==========>>>>>>Train CER: 0.08974358974358974
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 119.81908416748047
+
+==========>>>>>>Evaluation WER: 1.1470588235294117
+
+==========>>>>>>Evaluation CER: 0.8702290076335878
+
+Evaluation end time : 2019-09-17 18:27:55.949296
+Finished epoch 172 in 17.86702823638916
+Starting epoch 173, step 1557
+Start time : 2019-09-17 18:28:07.354768
+Finished epoch 173 in 17.024549961090088
+Starting epoch 174, step 1566
+Start time : 2019-09-17 18:28:24.379371
+Finished epoch 174 in 16.928467273712158
+Starting epoch 175, step 1575
+Start time : 2019-09-17 18:28:41.307896
+training_batch_WER: 0.2
+Prediction:  자리 있어요?       
+Reference:  자리 있어요?  
+Loss@Step: 1575  ::::::: 3.411912202835083
+Step time: 1.867621898651123 seconds
+==========>>>>>>Train WER: 0.2
+
+==========>>>>>>Train CER: 0.07092198581560284
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 117.72515106201172
+
+==========>>>>>>Evaluation WER: 1.2352941176470589
+
+==========>>>>>>Evaluation CER: 0.8702290076335878
+
+Evaluation end time : 2019-09-17 18:28:44.026805
+Finished epoch 175 in 17.748915672302246
+Starting epoch 176, step 1584
+Start time : 2019-09-17 18:28:59.056860
+Finished epoch 176 in 17.146915435791016
+Starting epoch 177, step 1593
+Start time : 2019-09-17 18:29:16.203830
+training_batch_WER: 0.13043478260869565
+Prediction:  경산이랑 가까운 위에 있나요?                   
+Reference:  경산이랑 가까운 위치에 있나요?  
+Loss@Step: 1600  ::::::: 2.478745937347412
+Step time: 1.8614208698272705 seconds
+==========>>>>>>Train WER: 0.13043478260869565
+
+==========>>>>>>Train CER: 0.04790419161676647
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 121.7093505859375
+
+==========>>>>>>Evaluation WER: 1.2058823529411764
+
+==========>>>>>>Evaluation CER: 0.8396946564885496
+
+Evaluation end time : 2019-09-17 18:29:32.114926
+Finished epoch 177 in 17.79597234725952
+Starting epoch 178, step 1602
+Start time : 2019-09-17 18:29:33.999850
+Finished epoch 178 in 17.027264833450317
+Starting epoch 179, step 1611
+Start time : 2019-09-17 18:29:51.027168
+Finished epoch 179 in 17.175650119781494
+Starting epoch 180, step 1620
+Start time : 2019-09-17 18:30:08.202873
+training_batch_WER: 0.3488372093023256
+Prediction:  까운버스정류이 어딘가요?           
+Reference:  가까운 버스정류장이 어딘가요?  
+Loss@Step: 1625  ::::::: 6.283070087432861
+Step time: 1.8587069511413574 seconds
+==========>>>>>>Train WER: 0.3488372093023256
+
+==========>>>>>>Train CER: 0.10344827586206896
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 123.15132141113281
+
+==========>>>>>>Evaluation WER: 1.1176470588235294
+
+==========>>>>>>Evaluation CER: 0.8473282442748091
+
+Evaluation end time : 2019-09-17 18:30:20.069161
+Finished epoch 180 in 17.78716778755188
+Starting epoch 181, step 1629
+Start time : 2019-09-17 18:30:25.990122
+Finished epoch 181 in 17.0444176197052
+Starting epoch 182, step 1638
+Start time : 2019-09-17 18:30:43.034608
+Finished epoch 182 in 17.037214994430542
+Starting epoch 183, step 1647
+Start time : 2019-09-17 18:31:00.071880
+training_batch_WER: 0.3611111111111111
+Prediction:  학생할인기준은 무엇인가요? 생몇 까지 인가요?                   
+Reference:  학생할인 기준은 무엇인가요? 몇 살까지 인가요?  
+Loss@Step: 1650  ::::::: 6.904917240142822
+Step time: 1.808046579360962 seconds
+==========>>>>>>Train WER: 0.3611111111111111
+
+==========>>>>>>Train CER: 0.10071942446043165
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 127.4195785522461
+
+==========>>>>>>Evaluation WER: 1.1470588235294117
+
+==========>>>>>>Evaluation CER: 0.8473282442748091
+
+Evaluation end time : 2019-09-17 18:31:08.343487
+Finished epoch 183 in 17.880512237548828
+Starting epoch 184, step 1656
+Start time : 2019-09-17 18:31:17.952442
+Finished epoch 184 in 17.14088726043701
+Starting epoch 185, step 1665
+Start time : 2019-09-17 18:31:35.093381
+Finished epoch 185 in 17.132781744003296
+Starting epoch 186, step 1674
+Start time : 2019-09-17 18:31:52.226218
+training_batch_WER: 0.25
+Prediction:  서대입구에서가까운 곳에 있나요?   
+Reference:  서울대 입구역에서 가까운 곳에 있나요?  
+Loss@Step: 1675  ::::::: 3.5322468280792236
+Step time: 1.861889362335205 seconds
+==========>>>>>>Train WER: 0.25
+
+==========>>>>>>Train CER: 0.06578947368421052
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 120.41596984863281
+
+==========>>>>>>Evaluation WER: 1.1764705882352942
+
+==========>>>>>>Evaluation CER: 0.8320610687022901
+
+Evaluation end time : 2019-09-17 18:31:56.795691
+Finished epoch 186 in 17.836214303970337
+Starting epoch 187, step 1683
+Start time : 2019-09-17 18:32:10.062481
+Finished epoch 187 in 16.857583045959473
+Starting epoch 188, step 1692
+Start time : 2019-09-17 18:32:26.920113
+training_batch_WER: 0.2558139534883721
+Prediction:  산이랑 랑 가까운 위치 있나요?                                  
+Reference:  경산이랑 가까운 위치에 있나요?  
+Loss@Step: 1700  ::::::: 2.9186112880706787
+Step time: 2.1514294147491455 seconds
+==========>>>>>>Train WER: 0.2558139534883721
+
+==========>>>>>>Train CER: 0.07534246575342465
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 118.0398178100586
+
+==========>>>>>>Evaluation WER: 1.1470588235294117
+
+==========>>>>>>Evaluation CER: 0.8396946564885496
+
+Evaluation end time : 2019-09-17 18:32:44.721411
+Finished epoch 188 in 17.825247764587402
+Starting epoch 189, step 1701
+Start time : 2019-09-17 18:32:44.745412
+Finished epoch 189 in 17.02628493309021
+Starting epoch 190, step 1710
+Start time : 2019-09-17 18:33:01.771749
+Finished epoch 190 in 16.972779750823975
+Starting epoch 191, step 1719
+Start time : 2019-09-17 18:33:18.744584
+training_batch_WER: 0.2
+Prediction:  20명 들어갈 갈자리 있나요?   
+Reference:  20명 들어갈 자리 있나요?  
+Loss@Step: 1725  ::::::: 2.6522152423858643
+Step time: 1.7881567478179932 seconds
+==========>>>>>>Train WER: 0.2
+
+==========>>>>>>Train CER: 0.08264462809917356
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 135.61416625976562
+
+==========>>>>>>Evaluation WER: 1.1470588235294117
+
+==========>>>>>>Evaluation CER: 0.8549618320610687
+
+Evaluation end time : 2019-09-17 18:33:32.812760
+Finished epoch 191 in 17.610296487808228
+Starting epoch 192, step 1728
+Start time : 2019-09-17 18:33:36.354929
+Finished epoch 192 in 17.155472993850708
+Starting epoch 193, step 1737
+Start time : 2019-09-17 18:33:53.510454
+Finished epoch 193 in 17.110440969467163
+Starting epoch 194, step 1746
+Start time : 2019-09-17 18:34:10.620950
+training_batch_WER: 0.21568627450980393
+Prediction:  25명 단체도예약 가능한가요?  
+Reference:  25명 단체도 예약 가능한가요?  
+Loss@Step: 1750  ::::::: 2.6075398921966553
+Step time: 1.869462013244629 seconds
+==========>>>>>>Train WER: 0.21568627450980393
+
+==========>>>>>>Train CER: 0.01639344262295082
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 127.18997955322266
+
+==========>>>>>>Evaluation WER: 1.2058823529411764
+
+==========>>>>>>Evaluation CER: 0.816793893129771
+
+Evaluation end time : 2019-09-17 18:34:21.082776
+Finished epoch 194 in 17.913167476654053
+Starting epoch 195, step 1755
+Start time : 2019-09-17 18:34:28.534179
+Finished epoch 195 in 17.14329695701599
+Starting epoch 196, step 1764
+Start time : 2019-09-17 18:34:45.677528
+Finished epoch 196 in 17.147663831710815
+Starting epoch 197, step 1773
+Start time : 2019-09-17 18:35:02.825247
+training_batch_WER: 0.24390243902439024
+Prediction:  설날에 영업하나요?                                     
+Reference:  설날에 영업하나요?  
+Loss@Step: 1775  ::::::: 2.656902313232422
+Step time: 1.850694179534912 seconds
+==========>>>>>>Train WER: 0.24390243902439024
+
+==========>>>>>>Train CER: 0.07092198581560284
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 131.50332641601562
+
+==========>>>>>>Evaluation WER: 1.2058823529411764
+
+==========>>>>>>Evaluation CER: 0.8778625954198473
+
+Evaluation end time : 2019-09-17 18:35:09.544486
+Finished epoch 197 in 17.7203209400177
+Starting epoch 198, step 1782
+Start time : 2019-09-17 18:35:20.545615
+Finished epoch 198 in 17.07903027534485
+Starting epoch 199, step 1791
+Start time : 2019-09-17 18:35:37.624697
+Finished epoch 199 in 17.17386245727539
+Saving module Jasper in /home/neoadmin/stt/Jasper/results/Jasper_1568712954.7986128-epoch-200.pt
+Saved.
+Starting epoch 200, step 1800
+Start time : 2019-09-17 18:35:56.916658
+training_batch_WER: 0.18181818181818182
+Prediction:  런치타임에 예약 가능한가요 ?                   
+Reference:  런치타임에 예약 가능한가요 ?  
+Loss@Step: 1800  ::::::: 3.0706138610839844
+Step time: 2.150956392288208 seconds
+==========>>>>>>Train WER: 0.18181818181818182
+
+==========>>>>>>Train CER: 0.056338028169014086
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 127.50182342529297
+
+==========>>>>>>Evaluation WER: 1.1764705882352942
+
+==========>>>>>>Evaluation CER: 0.8091603053435115
+
+Evaluation end time : 2019-09-17 18:35:59.916860
+Finished epoch 200 in 17.78265905380249
+Starting epoch 201, step 1809
+Start time : 2019-09-17 18:36:14.699370
+Finished epoch 201 in 17.16679072380066
+Starting epoch 202, step 1818
+Start time : 2019-09-17 18:36:31.866212
+training_batch_WER: 0.25
+Prediction:  주차는 몇시까지 할 수 있어요?  
+Reference:  주차는 몇시까지 할 수 있어요?  
+Loss@Step: 1825  ::::::: 2.3773200511932373
+Step time: 1.8474750518798828 seconds
+==========>>>>>>Train WER: 0.25
+
+==========>>>>>>Train CER: 0.05343511450381679
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 133.15602111816406
+
+==========>>>>>>Evaluation WER: 1.2058823529411764
+
+==========>>>>>>Evaluation CER: 0.8549618320610687
+
+Evaluation end time : 2019-09-17 18:36:47.887230
+Finished epoch 202 in 17.905613899230957
+Starting epoch 203, step 1827
+Start time : 2019-09-17 18:36:49.771875
+Finished epoch 203 in 16.843045711517334
+Starting epoch 204, step 1836
+Start time : 2019-09-17 18:37:06.614976
+Finished epoch 204 in 17.169058561325073
+Starting epoch 205, step 1845
+Start time : 2019-09-17 18:37:23.784088
+training_batch_WER: 0.21621621621621623
+Prediction:  설날에 영업하나요?        
+Reference:  설날에 영업하나요?  
+Loss@Step: 1850  ::::::: 2.6881816387176514
+Step time: 1.8455147743225098 seconds
+==========>>>>>>Train WER: 0.21621621621621623
+
+==========>>>>>>Train CER: 0.0703125
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 142.7381134033203
+
+==========>>>>>>Evaluation WER: 1.2352941176470589
+
+==========>>>>>>Evaluation CER: 0.9083969465648855
+
+Evaluation end time : 2019-09-17 18:37:36.071294
+Finished epoch 205 in 17.835251331329346
+Starting epoch 206, step 1854
+Start time : 2019-09-17 18:37:41.619387
+Finished epoch 206 in 17.15718674659729
+Starting epoch 207, step 1863
+Start time : 2019-09-17 18:37:58.776627
+Finished epoch 207 in 17.08673644065857
+Starting epoch 208, step 1872
+Start time : 2019-09-17 18:38:15.863419
+training_batch_WER: 0.1590909090909091
+Prediction:  방문 포장 예약하려고 전화드렸습니다    
+Reference:  방문 포장 예약하려고 전화드렸습니다  
+Loss@Step: 1875  ::::::: 2.4249932765960693
+Step time: 2.142730951309204 seconds
+==========>>>>>>Train WER: 0.1590909090909091
+
+==========>>>>>>Train CER: 0.04
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 137.50857543945312
+
+==========>>>>>>Evaluation WER: 1.2058823529411764
+
+==========>>>>>>Evaluation CER: 0.8854961832061069
+
+Evaluation end time : 2019-09-17 18:38:24.441229
+Finished epoch 208 in 17.890586376190186
+Starting epoch 209, step 1881
+Start time : 2019-09-17 18:38:33.754053
+Finished epoch 209 in 17.151015758514404
+Starting epoch 210, step 1890
+Start time : 2019-09-17 18:38:50.905119
+Finished epoch 210 in 16.847520351409912
+Starting epoch 211, step 1899
+Start time : 2019-09-17 18:39:07.752695
+training_batch_WER: 0.2222222222222222
+Prediction:  아기학 까아봐 걱정되는데 같이가도 괜찮을까요?  
+Reference:  아기가 울까봐 걱정되는데 같이가도 괜찮을까요?  
+Loss@Step: 1900  ::::::: 4.264521598815918
+Step time: 1.876551628112793 seconds
+==========>>>>>>Train WER: 0.2222222222222222
+
+==========>>>>>>Train CER: 0.08227848101265822
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 127.17569732666016
+
+==========>>>>>>Evaluation WER: 1.2647058823529411
+
+==========>>>>>>Evaluation CER: 0.8549618320610687
+
+Evaluation end time : 2019-09-17 18:39:12.344570
+Finished epoch 211 in 17.40457034111023
+Starting epoch 212, step 1908
+Start time : 2019-09-17 18:39:25.157314
+Finished epoch 212 in 17.00562334060669
+Starting epoch 213, step 1917
+Start time : 2019-09-17 18:39:42.162998
+training_batch_WER: 0.07142857142857142
+Prediction:  학생 할인 기준이 어떻게 되나요?                                  
+Reference:  학생 할인 기준이 어떻게 되나요?  
+Loss@Step: 1925  ::::::: 1.1987475156784058
+Step time: 1.731494426727295 seconds
+==========>>>>>>Train WER: 0.07142857142857142
+
+==========>>>>>>Train CER: 0.022222222222222223
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 135.78125
+
+==========>>>>>>Evaluation WER: 1.1764705882352942
+
+==========>>>>>>Evaluation CER: 0.8931297709923665
+
+Evaluation end time : 2019-09-17 18:39:59.825025
+Finished epoch 213 in 17.682213306427002
+Starting epoch 214, step 1926
+Start time : 2019-09-17 18:39:59.845267
+Finished epoch 214 in 17.190546989440918
+Starting epoch 215, step 1935
+Start time : 2019-09-17 18:40:17.035868
+Finished epoch 215 in 16.956740856170654
+Starting epoch 216, step 1944
+Start time : 2019-09-17 18:40:33.992669
+training_batch_WER: 0.3
+Prediction:  한글날에 식 가능한가요?                              
+Reference:  한글날에 식사 가능한가요?  
+Loss@Step: 1950  ::::::: 3.237659454345703
+Step time: 1.855811595916748 seconds
+==========>>>>>>Train WER: 0.3
+
+==========>>>>>>Train CER: 0.0658682634730539
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 127.20149230957031
+
+==========>>>>>>Evaluation WER: 1.2058823529411764
+
+==========>>>>>>Evaluation CER: 0.8320610687022901
+
+Evaluation end time : 2019-09-17 18:40:47.828516
+Finished epoch 216 in 17.847015857696533
+Starting epoch 217, step 1953
+Start time : 2019-09-17 18:40:51.839734
+Finished epoch 217 in 17.01766061782837
+Starting epoch 218, step 1962
+Start time : 2019-09-17 18:41:08.857446
+Finished epoch 218 in 17.184085607528687
+Starting epoch 219, step 1971
+Start time : 2019-09-17 18:41:26.041586
+training_batch_WER: 0.11904761904761904
+Prediction:  파스타를 먹고은데 신메뉴가 있나요?                       
+Reference:  파스타를 먹고 싶은데 신메뉴가 있나요?  
+Loss@Step: 1975  ::::::: 1.587802767753601
+Step time: 1.866811990737915 seconds
+==========>>>>>>Train WER: 0.11904761904761904
+
+==========>>>>>>Train CER: 0.0273972602739726
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 134.8897247314453
+
+==========>>>>>>Evaluation WER: 1.2058823529411764
+
+==========>>>>>>Evaluation CER: 0.8473282442748091
+
+Evaluation end time : 2019-09-17 18:41:36.200171
+Finished epoch 219 in 17.880295753479004
+Starting epoch 220, step 1980
+Start time : 2019-09-17 18:41:43.921931
+Finished epoch 220 in 17.158336877822876
+Starting epoch 221, step 1989
+Start time : 2019-09-17 18:42:01.080335
+Finished epoch 221 in 17.013192892074585
+Starting epoch 222, step 1998
+Start time : 2019-09-17 18:42:18.093588
+training_batch_WER: 0.125
+Prediction:  주차는 몇시까지 할 수 있어요?                  
+Reference:  주차는 몇시까지 할 수 있어요?  
+Loss@Step: 2000  ::::::: 1.8370128870010376
+Step time: 1.8554768562316895 seconds
+==========>>>>>>Train WER: 0.125
+
+==========>>>>>>Train CER: 0.014705882352941176
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 135.61154174804688
+
+==========>>>>>>Evaluation WER: 1.2058823529411764
+
+==========>>>>>>Evaluation CER: 0.8549618320610687
+
+Evaluation end time : 2019-09-17 18:42:24.543315
+Finished epoch 222 in 17.861500024795532
+Starting epoch 223, step 2007
+Start time : 2019-09-17 18:42:35.955137
+Finished epoch 223 in 17.067135334014893
+Starting epoch 224, step 2016
+Start time : 2019-09-17 18:42:53.022325
+Finished epoch 224 in 16.967479467391968
+Starting epoch 225, step 2025
+Start time : 2019-09-17 18:43:09.989860
+training_batch_WER: 0.10810810810810811
+Prediction:  목동점 어디에 있나요?                              
+Reference:  목동점 어디에 있나요?  
+Loss@Step: 2025  ::::::: 1.340652585029602
+Step time: 2.1484851837158203 seconds
+==========>>>>>>Train WER: 0.10810810810810811
+
+==========>>>>>>Train CER: 0.029411764705882353
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 134.5442352294922
+
+==========>>>>>>Evaluation WER: 1.2058823529411764
+
+==========>>>>>>Evaluation CER: 0.8473282442748091
+
+Evaluation end time : 2019-09-17 18:43:12.987117
+Finished epoch 225 in 17.794403314590454
+Starting epoch 226, step 2034
+Start time : 2019-09-17 18:43:27.784312
+Finished epoch 226 in 17.08445143699646
+Starting epoch 227, step 2043
+Start time : 2019-09-17 18:43:44.868815
+training_batch_WER: 0.1346153846153846
+Prediction:  메뉴 하나를 아기 그릇에 따로나눠서 담아 주실 수 있나요?   
+Reference:  메뉴 하나를 아기 그릇에 따로나눠서 담아 주실 수 있나요?  
+Loss@Step: 2050  ::::::: 1.7625353336334229
+Step time: 1.8569648265838623 seconds
+==========>>>>>>Train WER: 0.1346153846153846
+
+==========>>>>>>Train CER: 0.041176470588235294
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 129.79759216308594
+
+==========>>>>>>Evaluation WER: 1.1176470588235294
+
+==========>>>>>>Evaluation CER: 0.8702290076335878
+
+Evaluation end time : 2019-09-17 18:44:00.766244
+Finished epoch 227 in 17.77552556991577
+Starting epoch 228, step 2052
+Start time : 2019-09-17 18:44:02.644389
+Finished epoch 228 in 17.041327953338623
+Starting epoch 229, step 2061
+Start time : 2019-09-17 18:44:19.685769
+Finished epoch 229 in 16.98252558708191
+Starting epoch 230, step 2070
+Start time : 2019-09-17 18:44:36.668351
+training_batch_WER: 0.10204081632653061
+Prediction:  스테이크종류는 어떤게 있나요?               
+Reference:  스테이크종류는 어떤게 있나요?  
+Loss@Step: 2075  ::::::: 1.3339499235153198
+Step time: 1.8617143630981445 seconds
+==========>>>>>>Train WER: 0.10204081632653061
+
+==========>>>>>>Train CER: 0.019867549668874173
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 135.17283630371094
+
+==========>>>>>>Evaluation WER: 1.1764705882352942
+
+==========>>>>>>Evaluation CER: 0.9007633587786259
+
+Evaluation end time : 2019-09-17 18:44:48.586487
+Finished epoch 230 in 17.67119026184082
+Starting epoch 231, step 2079
+Start time : 2019-09-17 18:44:54.339589
+Finished epoch 231 in 17.01254940032959
+Starting epoch 232, step 2088
+Start time : 2019-09-17 18:45:11.352191
+Finished epoch 232 in 17.144240140914917
+Starting epoch 233, step 2097
+Start time : 2019-09-17 18:45:28.496488
+training_batch_WER: 0.10256410256410256
+Prediction:  내일 오후 5시에 예약 가능한가요?   
+Reference:  내일 오후 5시에 예약 가능한가요?  
+Loss@Step: 2100  ::::::: 1.4241904020309448
+Step time: 1.8536882400512695 seconds
+==========>>>>>>Train WER: 0.10256410256410256
+
+==========>>>>>>Train CER: 0.04285714285714286
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 131.4778594970703
+
+==========>>>>>>Evaluation WER: 1.1470588235294117
+
+==========>>>>>>Evaluation CER: 0.8473282442748091
+
+Evaluation end time : 2019-09-17 18:45:36.726556
+Finished epoch 233 in 17.860551357269287
+Starting epoch 234, step 2106
+Start time : 2019-09-17 18:45:46.357088
+Finished epoch 234 in 17.157766819000244
+Starting epoch 235, step 2115
+Start time : 2019-09-17 18:46:03.514908
+Finished epoch 235 in 17.08234429359436
+Starting epoch 236, step 2124
+Start time : 2019-09-17 18:46:20.597307
+training_batch_WER: 0.1
+Prediction:  샐러드류도 배달 가능한가요?     
+Reference:  샐러드류도 배달 가능한가요?  
+Loss@Step: 2125  ::::::: 1.2083598375320435
+Step time: 1.8610105514526367 seconds
+==========>>>>>>Train WER: 0.1
+
+==========>>>>>>Train CER: 0.031007751937984496
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 133.42381286621094
+
+==========>>>>>>Evaluation WER: 1.2058823529411764
+
+==========>>>>>>Evaluation CER: 0.8320610687022901
+
+Evaluation end time : 2019-09-17 18:46:25.174871
+Finished epoch 236 in 17.842841863632202
+Starting epoch 237, step 2133
+Start time : 2019-09-17 18:46:38.440197
+Finished epoch 237 in 17.067517518997192
+Starting epoch 238, step 2142
+Start time : 2019-09-17 18:46:55.507767
+training_batch_WER: 0.09615384615384616
+Prediction:  메뉴 하나를 아기 그릇에 따로나눠서 담아 주실 수 있나요?  
+Reference:  메뉴 하나를 아기 그릇에 따로나눠서 담아 주실 수 있나요?  
+Loss@Step: 2150  ::::::: 1.491589903831482
+Step time: 1.8603804111480713 seconds
+==========>>>>>>Train WER: 0.09615384615384616
+
+==========>>>>>>Train CER: 0.03205128205128205
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 141.21548461914062
+
+==========>>>>>>Evaluation WER: 1.1764705882352942
+
+==========>>>>>>Evaluation CER: 0.9007633587786259
+
+Evaluation end time : 2019-09-17 18:47:13.394887
+Finished epoch 238 in 17.909228086471558
+Starting epoch 239, step 2151
+Start time : 2019-09-17 18:47:13.417046
+Finished epoch 239 in 17.097505569458008
+Starting epoch 240, step 2160
+Start time : 2019-09-17 18:47:30.514603
+Finished epoch 240 in 17.073582649230957
+Starting epoch 241, step 2169
+Start time : 2019-09-17 18:47:47.588242
+training_batch_WER: 0.15
+Prediction:  음료도 달이 가능한가요?       
+Reference:  음료도 배달이 가능한가요?  
+Loss@Step: 2175  ::::::: 1.4711955785751343
+Step time: 1.8584661483764648 seconds
+==========>>>>>>Train WER: 0.15
+
+==========>>>>>>Train CER: 0.027210884353741496
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 135.51914978027344
+
+==========>>>>>>Evaluation WER: 1.1764705882352942
+
+==========>>>>>>Evaluation CER: 0.8854961832061069
+
+Evaluation end time : 2019-09-17 18:48:01.694427
+Finished epoch 241 in 17.835681200027466
+Starting epoch 242, step 2178
+Start time : 2019-09-17 18:48:05.423971
+Finished epoch 242 in 17.130850553512573
+Starting epoch 243, step 2187
+Start time : 2019-09-17 18:48:22.554874
+Finished epoch 243 in 17.137336492538452
+Starting epoch 244, step 2196
+Start time : 2019-09-17 18:48:39.692267
+training_batch_WER: 0.10810810810810811
+Prediction:  학생할인 대학생도 되나요?                                         
+Reference:  학생할인 대학생도 되나요?  
+Loss@Step: 2200  ::::::: 1.3366508483886719
+Step time: 1.8486762046813965 seconds
+==========>>>>>>Train WER: 0.10810810810810811
+
+==========>>>>>>Train CER: 0.0390625
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 141.6532745361328
+
+==========>>>>>>Evaluation WER: 1.1764705882352942
+
+==========>>>>>>Evaluation CER: 0.8931297709923665
+
+Evaluation end time : 2019-09-17 18:48:50.117947
+Finished epoch 244 in 17.83700394630432
+Starting epoch 245, step 2205
+Start time : 2019-09-17 18:48:57.529320
+Finished epoch 245 in 17.013944625854492
+Starting epoch 246, step 2214
+Start time : 2019-09-17 18:49:14.543317
+Finished epoch 246 in 17.126884937286377
+Starting epoch 247, step 2223
+Start time : 2019-09-17 18:49:31.670259
+training_batch_WER: 0.10526315789473684
+Prediction:  추석 당일에도 영업하나요?                  
+Reference:  추석 당일에도 영업하나요?  
+Loss@Step: 2225  ::::::: 1.146543025970459
+Step time: 1.850294589996338 seconds
+==========>>>>>>Train WER: 0.10526315789473684
+
+==========>>>>>>Train CER: 0.030534351145038167
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 131.2093963623047
+
+==========>>>>>>Evaluation WER: 1.1764705882352942
+
+==========>>>>>>Evaluation CER: 0.8396946564885496
+
+Evaluation end time : 2019-09-17 18:49:38.092348
+Finished epoch 247 in 17.92041325569153
+Starting epoch 248, step 2232
+Start time : 2019-09-17 18:49:49.590721
+Finished epoch 248 in 16.80716896057129
+Starting epoch 249, step 2241
+Start time : 2019-09-17 18:50:06.397943
+Finished epoch 249 in 16.936463832855225
+Starting epoch 250, step 2250
+Start time : 2019-09-17 18:50:23.334463
+training_batch_WER: 0.2
+Prediction:  팀회을 하려고하는데 몇 자리까지 가능한가요?     
+Reference:  팀회식을 하려고하는데 몇 자리까지 가능한가요?  
+Loss@Step: 2250  ::::::: 1.7964630126953125
+Step time: 1.8641960620880127 seconds
+==========>>>>>>Train WER: 0.2
+
+==========>>>>>>Train CER: 0.06711409395973154
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 132.20921325683594
+
+==========>>>>>>Evaluation WER: 1.2058823529411764
+
+==========>>>>>>Evaluation CER: 0.8244274809160306
+
+Evaluation end time : 2019-09-17 18:50:26.050623
+Finished epoch 250 in 17.73899745941162
+Starting epoch 251, step 2259
+Start time : 2019-09-17 18:50:41.073509
+Finished epoch 251 in 16.893094062805176
+Starting epoch 252, step 2268
+Start time : 2019-09-17 18:50:57.966655
+training_batch_WER: 0.11627906976744186
+Prediction:  음료도 배달이 가능한가요?                       
+Reference:  음료도 배달이 가능한가요?  
+Loss@Step: 2275  ::::::: 1.3192883729934692
+Step time: 1.857987403869629 seconds
+==========>>>>>>Train WER: 0.11627906976744186
+
+==========>>>>>>Train CER: 0.019230769230769232
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 135.97596740722656
+
+==========>>>>>>Evaluation WER: 1.1470588235294117
+
+==========>>>>>>Evaluation CER: 0.8320610687022901
+
+Evaluation end time : 2019-09-17 18:51:14.035311
+Finished epoch 252 in 17.820162296295166
+Starting epoch 253, step 2277
+Start time : 2019-09-17 18:51:15.786867
+Finished epoch 253 in 17.03808903694153
+Starting epoch 254, step 2286
+Start time : 2019-09-17 18:51:32.825009
+Finished epoch 254 in 17.011800527572632
+Starting epoch 255, step 2295
+Start time : 2019-09-17 18:51:49.836863
+training_batch_WER: 0.09302325581395349
+Prediction:  영업 시간이 어떻게 됩니까?  
+Reference:  영업 시간이 어떻게 됩니까?  
+Loss@Step: 2300  ::::::: 0.8237960934638977
+Step time: 1.8580214977264404 seconds
+==========>>>>>>Train WER: 0.09302325581395349
+
+==========>>>>>>Train CER: 0.02631578947368421
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 137.32151794433594
+
+==========>>>>>>Evaluation WER: 1.1764705882352942
+
+==========>>>>>>Evaluation CER: 0.8396946564885496
+
+Evaluation end time : 2019-09-17 18:52:01.866236
+Finished epoch 255 in 17.921342372894287
+Starting epoch 256, step 2304
+Start time : 2019-09-17 18:52:07.758254
+Finished epoch 256 in 17.06659722328186
+Starting epoch 257, step 2313
+Start time : 2019-09-17 18:52:24.824904
+Finished epoch 257 in 17.038611888885498
+Starting epoch 258, step 2322
+Start time : 2019-09-17 18:52:41.863573
+training_batch_WER: 0.09433962264150944
+Prediction:  명동점에 가려고 하는데 명동역 몇 번 출구로 나와야 되나요?  
+Reference:  명동점에 가려고 하는데 명동역 몇 번 출구로 나와야 되나요?  
+Loss@Step: 2325  ::::::: 1.512113332748413
+Step time: 1.863316535949707 seconds
+==========>>>>>>Train WER: 0.09433962264150944
+
+==========>>>>>>Train CER: 0.011049723756906077
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 141.654541015625
+
+==========>>>>>>Evaluation WER: 1.1470588235294117
+
+==========>>>>>>Evaluation CER: 0.8549618320610687
+
+Evaluation end time : 2019-09-17 18:52:50.365127
+Finished epoch 258 in 17.845675706863403
+Starting epoch 259, step 2331
+Start time : 2019-09-17 18:52:59.709296
+Finished epoch 259 in 17.071014404296875
+Starting epoch 260, step 2340
+Start time : 2019-09-17 18:53:16.780361
+Finished epoch 260 in 16.8989999294281
+Starting epoch 261, step 2349
+Start time : 2019-09-17 18:53:33.679416
+training_batch_WER: 0.0975609756097561
+Prediction:  지금 주차하면 몇 시까지 있을 수 있나요?        
+Reference:  지금 주차하면 몇 시까지 있을 수 있나요?  
+Loss@Step: 2350  ::::::: 1.1431869268417358
+Step time: 1.8533978462219238 seconds
+==========>>>>>>Train WER: 0.0975609756097561
+
+==========>>>>>>Train CER: 0.030303030303030304
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 134.4789276123047
+
+==========>>>>>>Evaluation WER: 1.1470588235294117
+
+==========>>>>>>Evaluation CER: 0.8473282442748091
+
+Evaluation end time : 2019-09-17 18:53:38.239545
+Finished epoch 261 in 17.85926866531372
+Starting epoch 262, step 2358
+Start time : 2019-09-17 18:53:51.538733
+Finished epoch 262 in 17.172447681427002
+Starting epoch 263, step 2367
+Start time : 2019-09-17 18:54:08.711232
+training_batch_WER: 0.18604651162790697
+Prediction:  화장실에 파우치를 놓고왔는데한번 찾기봐주세요!  
+Reference:  화장실에 파우치를 놓고왔는데 한번 찾아봐주세요!  
+Loss@Step: 2375  ::::::: 1.6396340131759644
+Step time: 1.8617653846740723 seconds
+==========>>>>>>Train WER: 0.18604651162790697
+
+==========>>>>>>Train CER: 0.04
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 140.68980407714844
+
+==========>>>>>>Evaluation WER: 1.1470588235294117
+
+==========>>>>>>Evaluation CER: 0.8778625954198473
+
+Evaluation end time : 2019-09-17 18:54:26.486854
+Finished epoch 263 in 17.79787039756775
+Starting epoch 264, step 2376
+Start time : 2019-09-17 18:54:26.509152
+Finished epoch 264 in 17.082724571228027
+Starting epoch 265, step 2385
+Start time : 2019-09-17 18:54:43.591928
+Finished epoch 265 in 16.931233406066895
+Starting epoch 266, step 2394
+Start time : 2019-09-17 18:55:00.523217
+training_batch_WER: 0.1282051282051282
+Prediction:  아기용 음료가 따로 있나요?                 
+Reference:  아기용 음료가 따로 있나요?  
+Loss@Step: 2400  ::::::: 1.214340090751648
+Step time: 2.153120517730713 seconds
+==========>>>>>>Train WER: 0.1282051282051282
+
+==========>>>>>>Train CER: 0.03571428571428571
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 134.1905975341797
+
+==========>>>>>>Evaluation WER: 1.1470588235294117
+
+==========>>>>>>Evaluation CER: 0.8549618320610687
+
+Evaluation end time : 2019-09-17 18:55:14.675481
+Finished epoch 266 in 17.89592719078064
+Starting epoch 267, step 2403
+Start time : 2019-09-17 18:55:18.419192
+Finished epoch 267 in 17.071905612945557
+Starting epoch 268, step 2412
+Start time : 2019-09-17 18:55:35.491151
+Finished epoch 268 in 17.093124628067017
+Starting epoch 269, step 2421
+Start time : 2019-09-17 18:55:52.584330
+training_batch_WER: 0.1590909090909091
+Prediction:  25명 단체도 예약 가능한가요?  
+Reference:  25명 단체도 예약 가능한가요?  
+Loss@Step: 2425  ::::::: 1.5170978307724
+Step time: 1.8591015338897705 seconds
+==========>>>>>>Train WER: 0.1590909090909091
+
+==========>>>>>>Train CER: 0.019230769230769232
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 133.1693115234375
+
+==========>>>>>>Evaluation WER: 1.2352941176470589
+
+==========>>>>>>Evaluation CER: 0.816793893129771
+
+Evaluation end time : 2019-09-17 18:56:02.805071
+Finished epoch 269 in 17.67343044281006
+Starting epoch 270, step 2430
+Start time : 2019-09-17 18:56:10.257809
+Finished epoch 270 in 16.807758331298828
+Starting epoch 271, step 2439
+Start time : 2019-09-17 18:56:27.065620
+Finished epoch 271 in 17.03647255897522
+Starting epoch 272, step 2448
+Start time : 2019-09-17 18:56:44.102167
+training_batch_WER: 0.1794871794871795
+Prediction:  주차시간 몇시간이에요?  
+Reference:  주차시간 몇시간이에요?  
+Loss@Step: 2450  ::::::: 1.8516556024551392
+Step time: 1.865246057510376 seconds
+==========>>>>>>Train WER: 0.1794871794871795
+
+==========>>>>>>Train CER: 0.06293706293706294
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 147.4523468017578
+
+==========>>>>>>Evaluation WER: 1.1470588235294117
+
+==========>>>>>>Evaluation CER: 0.8473282442748091
+
+Evaluation end time : 2019-09-17 18:56:50.845578
+Finished epoch 272 in 17.922284841537476
+Starting epoch 273, step 2457
+Start time : 2019-09-17 18:57:02.024502
+Finished epoch 273 in 17.156615495681763
+Starting epoch 274, step 2466
+Start time : 2019-09-17 18:57:19.181169
+Finished epoch 274 in 16.836352348327637
+Starting epoch 275, step 2475
+Start time : 2019-09-17 18:57:36.017576
+training_batch_WER: 0.2653061224489796
+Prediction:  여 기 어딘데 예달 돼요?  
+Reference:  여기 어딘데 배달 돼요?  
+Loss@Step: 2475  ::::::: 3.332602024078369
+Step time: 1.8688714504241943 seconds
+==========>>>>>>Train WER: 0.2653061224489796
+
+==========>>>>>>Train CER: 0.056962025316455694
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 141.2279815673828
+
+==========>>>>>>Evaluation WER: 1.1470588235294117
+
+==========>>>>>>Evaluation CER: 0.8702290076335878
+
+Evaluation end time : 2019-09-17 18:57:38.734238
+Finished epoch 275 in 17.65414834022522
+Starting epoch 276, step 2484
+Start time : 2019-09-17 18:57:53.671775
+Finished epoch 276 in 17.039225578308105
+Starting epoch 277, step 2493
+Start time : 2019-09-17 18:58:10.711052
+training_batch_WER: 0.05
+Prediction:  스테이크의 종류들이 궁금해요               
+Reference:  스테이크의 종류들이 궁금해요  
+Loss@Step: 2500  ::::::: 0.5864405035972595
+Step time: 2.1576249599456787 seconds
+==========>>>>>>Train WER: 0.05
+
+==========>>>>>>Train CER: 0.014084507042253521
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 138.43222045898438
+
+==========>>>>>>Evaluation WER: 1.1470588235294117
+
+==========>>>>>>Evaluation CER: 0.8778625954198473
+
+Evaluation end time : 2019-09-17 18:58:26.468384
+Finished epoch 277 in 17.659529209136963
+Starting epoch 278, step 2502
+Start time : 2019-09-17 18:58:28.370630
+Finished epoch 278 in 16.888280630111694
+Starting epoch 279, step 2511
+Start time : 2019-09-17 18:58:45.258964
+Finished epoch 279 in 17.126444816589355
+Starting epoch 280, step 2520
+Start time : 2019-09-17 18:59:02.385463
+training_batch_WER: 0.05263157894736842
+Prediction:  평일에는 보통 몇시간까지 주차가 가능한가요?              
+Reference:  평일에는 보통 몇시간까지 주차가 가능한가요?  
+Loss@Step: 2525  ::::::: 0.3784801959991455
+Step time: 1.8578307628631592 seconds
+==========>>>>>>Train WER: 0.05263157894736842
+
+==========>>>>>>Train CER: 0.014705882352941176
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 137.61361694335938
+
+==========>>>>>>Evaluation WER: 1.2058823529411764
+
+==========>>>>>>Evaluation CER: 0.8473282442748091
+
+Evaluation end time : 2019-09-17 18:59:14.410706
+Finished epoch 280 in 17.841511487960815
+Starting epoch 281, step 2529
+Start time : 2019-09-17 18:59:20.227021
+Finished epoch 281 in 16.91357946395874
+Starting epoch 282, step 2538
+Start time : 2019-09-17 18:59:37.140654
+Finished epoch 282 in 17.040873765945435
+Starting epoch 283, step 2547
+Start time : 2019-09-17 18:59:54.181583
+training_batch_WER: 0.02564102564102564
+Prediction:  아웃백 위치가 어디인가요?         
+Reference:  아웃백 위치가 어디인가요?  
+Loss@Step: 2550  ::::::: 0.7655459642410278
+Step time: 1.8672211170196533 seconds
+==========>>>>>>Train WER: 0.02564102564102564
+
+==========>>>>>>Train CER: 0.007407407407407408
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 146.4154815673828
+
+==========>>>>>>Evaluation WER: 1.1176470588235294
+
+==========>>>>>>Evaluation CER: 0.8778625954198473
+
+Evaluation end time : 2019-09-17 19:00:02.310591
+Finished epoch 283 in 17.75268316268921
+Starting epoch 284, step 2556
+Start time : 2019-09-17 19:00:11.934315
+Finished epoch 284 in 17.136415004730225
+Starting epoch 285, step 2565
+Start time : 2019-09-17 19:00:29.070783
+Finished epoch 285 in 16.955052614212036
+Starting epoch 286, step 2574
+Start time : 2019-09-17 19:00:46.025891
+training_batch_WER: 0.10638297872340426
+Prediction:  예약 하고싶습니다    
+Reference:  예약 하고싶습니다  
+Loss@Step: 2575  ::::::: 1.2171642780303955
+Step time: 1.855370044708252 seconds
+==========>>>>>>Train WER: 0.10638297872340426
+
+==========>>>>>>Train CER: 0.02027027027027027
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 137.90310668945312
+
+==========>>>>>>Evaluation WER: 1.1470588235294117
+
+==========>>>>>>Evaluation CER: 0.8931297709923665
+
+Evaluation end time : 2019-09-17 19:00:50.588203
+Finished epoch 286 in 17.899489402770996
+Starting epoch 287, step 2583
+Start time : 2019-09-17 19:01:03.925431
+Finished epoch 287 in 17.16538166999817
+Starting epoch 288, step 2592
+Start time : 2019-09-17 19:01:21.090865
+training_batch_WER: 0.07692307692307693
+Prediction:  8시에 가려고 하는데 가능한가요?  
+Reference:  8시에 가려고 하는데 가능한가요?  
+Loss@Step: 2600  ::::::: 0.7184223532676697
+Step time: 1.86149001121521 seconds
+==========>>>>>>Train WER: 0.07692307692307693
+
+==========>>>>>>Train CER: 0.022058823529411766
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 144.0200653076172
+
+==========>>>>>>Evaluation WER: 1.1764705882352942
+
+==========>>>>>>Evaluation CER: 0.8778625954198473
+
+Evaluation end time : 2019-09-17 19:01:38.986967
+Finished epoch 288 in 17.918808698654175
+Starting epoch 289, step 2601
+Start time : 2019-09-17 19:01:39.009723
+Finished epoch 289 in 17.139543771743774
+Starting epoch 290, step 2610
+Start time : 2019-09-17 19:01:56.149320
+Finished epoch 290 in 17.170679807662964
+Starting epoch 291, step 2619
+Start time : 2019-09-17 19:02:13.320055
+training_batch_WER: 0.125
+Prediction:  런치 할인과 학생 할인 중복되나요?                  
+Reference:  런치 할인과 학생 할인 중복되나요?  
+Loss@Step: 2625  ::::::: 1.2712485790252686
+Step time: 1.856571912765503 seconds
+==========>>>>>>Train WER: 0.125
+
+==========>>>>>>Train CER: 0.007692307692307693
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 144.5613250732422
+
+==========>>>>>>Evaluation WER: 1.1764705882352942
+
+==========>>>>>>Evaluation CER: 0.8396946564885496
+
+Evaluation end time : 2019-09-17 19:02:27.438933
+Finished epoch 291 in 17.817041635513306
+Starting epoch 292, step 2628
+Start time : 2019-09-17 19:02:31.137144
+Finished epoch 292 in 17.06251072883606
+Starting epoch 293, step 2637
+Start time : 2019-09-17 19:02:48.199707
+Finished epoch 293 in 16.891234874725342
+Starting epoch 294, step 2646
+Start time : 2019-09-17 19:03:05.090998
+training_batch_WER: 0.17777777777777778
+Prediction:  몇시간 주차 할 수 있나요?                                     
+Reference:  몇 시간 주차 할 수 있나요?  
+Loss@Step: 2650  ::::::: 1.4084504842758179
+Step time: 2.1488921642303467 seconds
+==========>>>>>>Train WER: 0.17777777777777778
+
+==========>>>>>>Train CER: 0.0364963503649635
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 140.63223266601562
+
+==========>>>>>>Evaluation WER: 1.2058823529411764
+
+==========>>>>>>Evaluation CER: 0.8320610687022901
+
+Evaluation end time : 2019-09-17 19:03:15.545349
+Finished epoch 294 in 17.873698234558105
+Starting epoch 295, step 2655
+Start time : 2019-09-17 19:03:22.964745
+Finished epoch 295 in 16.917990684509277
+Starting epoch 296, step 2664
+Start time : 2019-09-17 19:03:39.882788
+Finished epoch 296 in 16.983763217926025
+Starting epoch 297, step 2673
+Start time : 2019-09-17 19:03:56.866613
+training_batch_WER: 0.1111111111111111
+Prediction:  아웃백이 점해는 건물 이  어덯게 되나요?  
+Reference:  아웃백이 입점해있는 건물 이름이  어덯게 되나요?  
+Loss@Step: 2675  ::::::: 1.9042526483535767
+Step time: 1.859168291091919 seconds
+==========>>>>>>Train WER: 0.1111111111111111
+
+==========>>>>>>Train CER: 0.03680981595092025
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 143.0909423828125
+
+==========>>>>>>Evaluation WER: 1.2058823529411764
+
+==========>>>>>>Evaluation CER: 0.8396946564885496
+
+Evaluation end time : 2019-09-17 19:04:03.296650
+Finished epoch 297 in 17.818778038024902
+Starting epoch 298, step 2682
+Start time : 2019-09-17 19:04:14.685446
+Finished epoch 298 in 17.071346044540405
+Starting epoch 299, step 2691
+Start time : 2019-09-17 19:04:31.756844
+Finished epoch 299 in 17.138655424118042
+Saving module Jasper in /home/neoadmin/stt/Jasper/results/Jasper_1568714688.895554-epoch-300.pt
+Saved.
+Starting epoch 300, step 2700
+Start time : 2019-09-17 19:04:51.070247
+training_batch_WER: 0.1282051282051282
+Prediction:  평지금 주차하면 몇 까지 을 수 있나요?  
+Reference:  지금 주차하면 몇 시까지 있을 수 있나요?  
+Loss@Step: 2700  ::::::: 1.4462419748306274
+Step time: 1.7368724346160889 seconds
+==========>>>>>>Train WER: 0.1282051282051282
+
+==========>>>>>>Train CER: 0.045454545454545456
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 144.5994873046875
+
+==========>>>>>>Evaluation WER: 1.2058823529411764
+
+==========>>>>>>Evaluation CER: 0.8320610687022901
+
+Evaluation end time : 2019-09-17 19:04:53.651844
+Finished epoch 300 in 17.50679349899292
+Starting epoch 301, step 2709
+Start time : 2019-09-17 19:05:08.577106
+Finished epoch 301 in 16.92889380455017
+Starting epoch 302, step 2718
+Start time : 2019-09-17 19:05:25.506053
+training_batch_WER: 0.07317073170731707
+Prediction:  단체석이 있을까요      
+Reference:  단체석이 있을까요  
+Loss@Step: 2725  ::::::: 1.1148592233657837
+Step time: 1.858001708984375 seconds
+==========>>>>>>Train WER: 0.07317073170731707
+
+==========>>>>>>Train CER: 0.007692307692307693
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 145.7456817626953
+
+==========>>>>>>Evaluation WER: 1.1764705882352942
+
+==========>>>>>>Evaluation CER: 0.8702290076335878
+
+Evaluation end time : 2019-09-17 19:05:41.511934
+Finished epoch 302 in 17.884576082229614
+Starting epoch 303, step 2727
+Start time : 2019-09-17 19:05:43.390678
+Finished epoch 303 in 17.08321213722229
+Starting epoch 304, step 2736
+Start time : 2019-09-17 19:06:00.473942
+Finished epoch 304 in 16.893784523010254
+Starting epoch 305, step 2745
+Start time : 2019-09-17 19:06:17.367781
+training_batch_WER: 0.07547169811320754
+Prediction:  전철 고 가려고 하는이데 주변에 전철역이 있나요?           
+Reference:  전철 타고 가려고 하는데 주변에 전철역이 있나요?  
+Loss@Step: 2750  ::::::: 1.260796308517456
+Step time: 2.156881332397461 seconds
+==========>>>>>>Train WER: 0.07547169811320754
+
+==========>>>>>>Train CER: 0.022727272727272728
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 145.43943786621094
+
+==========>>>>>>Evaluation WER: 1.1764705882352942
+
+==========>>>>>>Evaluation CER: 0.8625954198473282
+
+Evaluation end time : 2019-09-17 19:06:29.675011
+Finished epoch 305 in 17.89217472076416
+Starting epoch 306, step 2754
+Start time : 2019-09-17 19:06:35.260004
+Finished epoch 306 in 17.097586154937744
+Starting epoch 307, step 2763
+Start time : 2019-09-17 19:06:52.357642
+Finished epoch 307 in 17.103748083114624
+Starting epoch 308, step 2772
+Start time : 2019-09-17 19:07:09.461445
+training_batch_WER: 0.08
+Prediction:  20명 들어갈 자리 있나요?   
+Reference:  20명 들어갈 자리 있나요?  
+Loss@Step: 2775  ::::::: 0.8014112710952759
+Step time: 1.8487379550933838 seconds
+==========>>>>>>Train WER: 0.08
+
+==========>>>>>>Train CER: 0.019867549668874173
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 149.6909942626953
+
+==========>>>>>>Evaluation WER: 1.2058823529411764
+
+==========>>>>>>Evaluation CER: 0.8854961832061069
+
+Evaluation end time : 2019-09-17 19:07:17.745009
+Finished epoch 308 in 17.894595861434937
+Starting epoch 309, step 2781
+Start time : 2019-09-17 19:07:27.356089
+Finished epoch 309 in 17.149936199188232
+Starting epoch 310, step 2790
+Start time : 2019-09-17 19:07:44.506077
+Finished epoch 310 in 17.164135456085205
+Starting epoch 311, step 2799
+Start time : 2019-09-17 19:08:01.670301
+training_batch_WER: 0.07407407407407407
+Prediction:  설날에 아웃백을 가고 싶은데 여는 매이 있나요?  
+Reference:  설날에 아웃백을 가고 싶은데 여는 매장이 있나요?  
+Loss@Step: 2800  ::::::: 1.0174384117126465
+Step time: 1.8799645900726318 seconds
+==========>>>>>>Train WER: 0.07407407407407407
+
+==========>>>>>>Train CER: 0.028409090909090908
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 143.55709838867188
+
+==========>>>>>>Evaluation WER: 1.1764705882352942
+
+==========>>>>>>Evaluation CER: 0.8549618320610687
+
+Evaluation end time : 2019-09-17 19:08:06.260515
+Finished epoch 311 in 17.902770042419434
+Starting epoch 312, step 2808
+Start time : 2019-09-17 19:08:19.573122
+Finished epoch 312 in 17.170069456100464
+Starting epoch 313, step 2817
+Start time : 2019-09-17 19:08:36.743243
+training_batch_WER: 0.0975609756097561
+Prediction:  경산이랑 가까운 위치에 있나요?      
+Reference:  경산이랑 가까운 위치에 있나요?  
+Loss@Step: 2825  ::::::: 1.192589521408081
+Step time: 1.783928632736206 seconds
+==========>>>>>>Train WER: 0.0975609756097561
+
+==========>>>>>>Train CER: 0.03731343283582089
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 143.8154296875
+
+==========>>>>>>Evaluation WER: 1.2058823529411764
+
+==========>>>>>>Evaluation CER: 0.8549618320610687
+
+Evaluation end time : 2019-09-17 19:08:54.559271
+Finished epoch 313 in 17.835885763168335
+Starting epoch 314, step 2826
+Start time : 2019-09-17 19:08:54.579179
+Finished epoch 314 in 17.06373381614685
+Starting epoch 315, step 2835
+Start time : 2019-09-17 19:09:11.642964
+Finished epoch 315 in 17.147364377975464
+Starting epoch 316, step 2844
+Start time : 2019-09-17 19:09:28.790384
+training_batch_WER: 0.12
+Prediction:  스테이는 서로인 말고 다른 거 어떤 있어요?  
+Reference:  스테이크는 서로인 말고 다른 거 어떤 거 있어요?  
+Loss@Step: 2850  ::::::: 1.8147324323654175
+Step time: 1.8663289546966553 seconds
+==========>>>>>>Train WER: 0.12
+
+==========>>>>>>Train CER: 0.018867924528301886
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 139.744384765625
+
+==========>>>>>>Evaluation WER: 1.2058823529411764
+
+==========>>>>>>Evaluation CER: 0.8625954198473282
+
+Evaluation end time : 2019-09-17 19:09:42.570500
+Finished epoch 316 in 17.822324991226196
+Starting epoch 317, step 2853
+Start time : 2019-09-17 19:09:46.612758
+Finished epoch 317 in 17.074188470840454
+Starting epoch 318, step 2862
+Start time : 2019-09-17 19:10:03.686997
+Finished epoch 318 in 17.10264015197754
+Starting epoch 319, step 2871
+Start time : 2019-09-17 19:10:20.789693
+training_batch_WER: 0.023809523809523808
+Prediction:  10명 갈껀데 예약 가능하죠죠?                             
+Reference:  10명 갈껀데 예약 가능하죠?  
+Loss@Step: 2875  ::::::: 0.4387710988521576
+Step time: 2.148793935775757 seconds
+==========>>>>>>Train WER: 0.023809523809523808
+
+==========>>>>>>Train CER: 0.007407407407407408
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 144.81773376464844
+
+==========>>>>>>Evaluation WER: 1.2058823529411764
+
+==========>>>>>>Evaluation CER: 0.8854961832061069
+
+Evaluation end time : 2019-09-17 19:10:31.257039
+Finished epoch 319 in 17.915414333343506
+Starting epoch 320, step 2880
+Start time : 2019-09-17 19:10:38.705157
+Finished epoch 320 in 17.011157989501953
+Starting epoch 321, step 2889
+Start time : 2019-09-17 19:10:55.716369
+Finished epoch 321 in 16.990023612976074
+Starting epoch 322, step 2898
+Start time : 2019-09-17 19:11:12.706448
+training_batch_WER: 0.06521739130434782
+Prediction:  사이드 메뉴에는 무엇이 있나요?                     
+Reference:  사이드 메뉴에는 무엇이 있나요?  
+Loss@Step: 2900  ::::::: 0.6294843554496765
+Step time: 1.849482536315918 seconds
+==========>>>>>>Train WER: 0.06521739130434782
+
+==========>>>>>>Train CER: 0.006944444444444444
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 144.1151580810547
+
+==========>>>>>>Evaluation WER: 1.1470588235294117
+
+==========>>>>>>Evaluation CER: 0.9236641221374046
+
+Evaluation end time : 2019-09-17 19:11:18.909044
+Finished epoch 322 in 17.61305022239685
+Starting epoch 323, step 2907
+Start time : 2019-09-17 19:11:30.319546
+Finished epoch 323 in 17.135990381240845
+Starting epoch 324, step 2916
+Start time : 2019-09-17 19:11:47.455589
+Finished epoch 324 in 16.93515133857727
+Starting epoch 325, step 2925
+Start time : 2019-09-17 19:12:04.390796
+training_batch_WER: 0.02127659574468085
+Prediction:  가장 가까운 지하철역이 무슨역 인가요?  
+Reference:  가장 가까운 지하철역이 무슨역 인가요?  
+Loss@Step: 2925  ::::::: 0.6993730068206787
+Step time: 1.8942830562591553 seconds
+==========>>>>>>Train WER: 0.02127659574468085
+
+==========>>>>>>Train CER: 0.006289308176100629
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 143.68699645996094
+
+==========>>>>>>Evaluation WER: 1.2058823529411764
+
+==========>>>>>>Evaluation CER: 0.8854961832061069
+
+Evaluation end time : 2019-09-17 19:12:07.129444
+Finished epoch 325 in 17.899027824401855
+Starting epoch 326, step 2934
+Start time : 2019-09-17 19:12:22.289875
+Finished epoch 326 in 17.177380561828613
+Starting epoch 327, step 2943
+Start time : 2019-09-17 19:12:39.467309
+training_batch_WER: 0.08888888888888889
+Prediction:  회식을 하려고하는데 몇 자리까지 가능한가요?  
+Reference:  팀회식을 하려고하는데 몇 자리까지 가능한가요?  
+Loss@Step: 2950  ::::::: 0.5023514628410339
+Step time: 1.860755443572998 seconds
+==========>>>>>>Train WER: 0.08888888888888889
+
+==========>>>>>>Train CER: 0.012578616352201259
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 141.24136352539062
+
+==========>>>>>>Evaluation WER: 1.1470588235294117
+
+==========>>>>>>Evaluation CER: 0.8778625954198473
+
+Evaluation end time : 2019-09-17 19:12:55.412208
+Finished epoch 327 in 17.81938076019287
+Starting epoch 328, step 2952
+Start time : 2019-09-17 19:12:57.286739
+Finished epoch 328 in 17.00664520263672
+Starting epoch 329, step 2961
+Start time : 2019-09-17 19:13:14.293437
+Finished epoch 329 in 17.09698486328125
+Starting epoch 330, step 2970
+Start time : 2019-09-17 19:13:31.390477
+training_batch_WER: 0.07142857142857142
+Prediction:  방문 포장 예약하려고 하는데요  
+Reference:  방문 포장 예약하려고 하는데요  
+Loss@Step: 2975  ::::::: 1.2577236890792847
+Step time: 2.148022174835205 seconds
+==========>>>>>>Train WER: 0.07142857142857142
+
+==========>>>>>>Train CER: 0.012987012987012988
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 141.38406372070312
+
+==========>>>>>>Evaluation WER: 1.1470588235294117
+
+==========>>>>>>Evaluation CER: 0.8854961832061069
+
+Evaluation end time : 2019-09-17 19:13:43.691698
+Finished epoch 330 in 17.899163484573364
+Starting epoch 331, step 2979
+Start time : 2019-09-17 19:13:49.289688
+Finished epoch 331 in 16.961334228515625
+Starting epoch 332, step 2988
+Start time : 2019-09-17 19:14:06.251075
+Finished epoch 332 in 17.011745929718018
+Starting epoch 333, step 2997
+Start time : 2019-09-17 19:14:23.262875
+training_batch_WER: 0.075
+Prediction:  아지금 주차하면 몇 시까지 있을 수 있나요?  
+Reference:  지금 주차하면 몇 시까지 있을 수 있나요?  
+Loss@Step: 3000  ::::::: 0.8123494982719421
+Step time: 1.7337892055511475 seconds
+==========>>>>>>Train WER: 0.075
+
+==========>>>>>>Train CER: 0.022058823529411766
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 142.66961669921875
+
+==========>>>>>>Evaluation WER: 1.2058823529411764
+
+==========>>>>>>Evaluation CER: 0.8702290076335878
+
+Evaluation end time : 2019-09-17 19:14:31.441558
+Finished epoch 333 in 17.666706323623657
+Starting epoch 334, step 3006
+Start time : 2019-09-17 19:14:40.929628
+Finished epoch 334 in 17.018742561340332
+Starting epoch 335, step 3015
+Start time : 2019-09-17 19:14:57.948424
+Finished epoch 335 in 17.06530737876892
+Starting epoch 336, step 3024
+Start time : 2019-09-17 19:15:15.013787
+training_batch_WER: 0.09302325581395349
+Prediction:  아기용  숟가락이랑 포크 준비 되죠?  
+Reference:  아기용  숟가락이랑 포크 준비 되죠?  
+Loss@Step: 3025  ::::::: 0.9396481513977051
+Step time: 1.850942611694336 seconds
+==========>>>>>>Train WER: 0.09302325581395349
+
+==========>>>>>>Train CER: 0.014084507042253521
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 143.06808471679688
+
+==========>>>>>>Evaluation WER: 1.1470588235294117
+
+==========>>>>>>Evaluation CER: 0.8702290076335878
+
+Evaluation end time : 2019-09-17 19:15:19.402179
+Finished epoch 336 in 17.73163342475891
+Starting epoch 337, step 3033
+Start time : 2019-09-17 19:15:32.745469
+Finished epoch 337 in 17.14414095878601
+Starting epoch 338, step 3042
+Start time : 2019-09-17 19:15:49.889663
+training_batch_WER: 0.02631578947368421
+Prediction:  배달 되는 메뉴가 정해져 있나요?   
+Reference:  배달 되는 메뉴가 정해져 있나요?  
+Loss@Step: 3050  ::::::: 0.6526743769645691
+Step time: 1.857550859451294 seconds
+==========>>>>>>Train WER: 0.02631578947368421
+
+==========>>>>>>Train CER: 0.007142857142857143
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 142.9559326171875
+
+==========>>>>>>Evaluation WER: 1.1764705882352942
+
+==========>>>>>>Evaluation CER: 0.8931297709923665
+
+Evaluation end time : 2019-09-17 19:16:07.754438
+Finished epoch 338 in 17.890186548233032
+Starting epoch 339, step 3051
+Start time : 2019-09-17 19:16:07.779898
+Finished epoch 339 in 17.03229308128357
+Starting epoch 340, step 3060
+Start time : 2019-09-17 19:16:24.812243
+Finished epoch 340 in 17.0713050365448
+Starting epoch 341, step 3069
+Start time : 2019-09-17 19:16:41.883603
+training_batch_WER: 0.046511627906976744
+Prediction:  방문 포장 예약하려고 전화드렸습니다  
+Reference:  방문 포장 예약하려고 전화드렸습니다  
+Loss@Step: 3075  ::::::: 0.823015034198761
+Step time: 1.8742637634277344 seconds
+==========>>>>>>Train WER: 0.046511627906976744
+
+==========>>>>>>Train CER: 0.013888888888888888
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 142.80613708496094
+
+==========>>>>>>Evaluation WER: 1.1764705882352942
+
+==========>>>>>>Evaluation CER: 0.8702290076335878
+
+Evaluation end time : 2019-09-17 19:16:55.746902
+Finished epoch 341 in 17.601476430892944
+Starting epoch 342, step 3078
+Start time : 2019-09-17 19:16:59.485126
+Finished epoch 342 in 17.150871515274048
+Starting epoch 343, step 3087
+Start time : 2019-09-17 19:17:16.636049
+Finished epoch 343 in 16.860187530517578
+Starting epoch 344, step 3096
+Start time : 2019-09-17 19:17:33.496292
+training_batch_WER: 0.022222222222222223
+Prediction:  1월1일에 영업하나요?    
+Reference:  1월1일에 영업하나요?  
+Loss@Step: 3100  ::::::: 0.3021101951599121
+Step time: 1.856713056564331 seconds
+==========>>>>>>Train WER: 0.022222222222222223
+
+==========>>>>>>Train CER: 0.007142857142857143
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 141.44053649902344
+
+==========>>>>>>Evaluation WER: 1.1470588235294117
+
+==========>>>>>>Evaluation CER: 0.8473282442748091
+
+Evaluation end time : 2019-09-17 19:17:43.546228
+Finished epoch 344 in 17.799384117126465
+Starting epoch 345, step 3105
+Start time : 2019-09-17 19:17:51.295725
+Finished epoch 345 in 17.117414236068726
+Starting epoch 346, step 3114
+Start time : 2019-09-17 19:18:08.413192
+Finished epoch 346 in 17.133411407470703
+Starting epoch 347, step 3123
+Start time : 2019-09-17 19:18:25.546658
+training_batch_WER: 0.1
+Prediction:  학생할인 대학생도 되나요?                                              
+Reference:  학생할인 대학생도 되나요?  
+Loss@Step: 3125  ::::::: 1.294916033744812
+Step time: 1.8514175415039062 seconds
+==========>>>>>>Train WER: 0.1
+
+==========>>>>>>Train CER: 0.038461538461538464
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 141.4600372314453
+
+==========>>>>>>Evaluation WER: 1.1764705882352942
+
+==========>>>>>>Evaluation CER: 0.8778625954198473
+
+Evaluation end time : 2019-09-17 19:18:31.918660
+Finished epoch 347 in 17.788243293762207
+Starting epoch 348, step 3132
+Start time : 2019-09-17 19:18:43.334951
+Finished epoch 348 in 17.15492081642151
+Starting epoch 349, step 3141
+Start time : 2019-09-17 19:19:00.489925
+Finished epoch 349 in 17.02980899810791
+Starting epoch 350, step 3150
+Start time : 2019-09-17 19:19:17.519791
+training_batch_WER: 0.1590909090909091
+Prediction:  시 번주일1시쯤자리있나요?  
+Reference:  혹시 이번주 일요일 12시쯤 자리있나요?  
+Loss@Step: 3150  ::::::: 3.643375873565674
+Step time: 1.8831427097320557 seconds
+==========>>>>>>Train WER: 0.1590909090909091
+
+==========>>>>>>Train CER: 0.046052631578947366
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 141.93251037597656
+
+==========>>>>>>Evaluation WER: 1.1470588235294117
+
+==========>>>>>>Evaluation CER: 0.8778625954198473
+
+Evaluation end time : 2019-09-17 19:19:20.263075
+Finished epoch 350 in 17.92112636566162
+Starting epoch 351, step 3159
+Start time : 2019-09-17 19:19:35.440967
+Finished epoch 351 in 17.15893793106079
+Starting epoch 352, step 3168
+Start time : 2019-09-17 19:19:52.599958
+training_batch_WER: 0.04081632653061224
+Prediction:  추석 당일에도 영업하나요?  
+Reference:  추석 당일에도 영업하나요?  
+Loss@Step: 3175  ::::::: 0.8979059457778931
+Step time: 1.8637135028839111 seconds
+==========>>>>>>Train WER: 0.04081632653061224
+
+==========>>>>>>Train CER: 0.012738853503184714
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 141.73680114746094
+
+==========>>>>>>Evaluation WER: 1.2058823529411764
+
+==========>>>>>>Evaluation CER: 0.8778625954198473
+
+Evaluation end time : 2019-09-17 19:20:08.544677
+Finished epoch 352 in 17.82505774497986
+Starting epoch 353, step 3177
+Start time : 2019-09-17 19:20:10.425066
+Finished epoch 353 in 17.05641269683838
+Starting epoch 354, step 3186
+Start time : 2019-09-17 19:20:27.481533
+Finished epoch 354 in 17.12201976776123
+Starting epoch 355, step 3195
+Start time : 2019-09-17 19:20:44.603605
+training_batch_WER: 0.057692307692307696
+Prediction:  혹시 이번주 일요일 12시쯤 자리있나요?  
+Reference:  혹시 이번주 일요일 12시쯤 자리있나요?  
+Loss@Step: 3200  ::::::: 0.6124720573425293
+Step time: 1.8644194602966309 seconds
+==========>>>>>>Train WER: 0.057692307692307696
+
+==========>>>>>>Train CER: 0.005847953216374269
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 140.37034606933594
+
+==========>>>>>>Evaluation WER: 1.1470588235294117
+
+==========>>>>>>Evaluation CER: 0.8778625954198473
+
+Evaluation end time : 2019-09-17 19:20:56.634117
+Finished epoch 355 in 17.915603399276733
+Starting epoch 356, step 3204
+Start time : 2019-09-17 19:21:02.519258
+Finished epoch 356 in 17.128028631210327
+Starting epoch 357, step 3213
+Start time : 2019-09-17 19:21:19.647339
+Finished epoch 357 in 17.003044605255127
+Starting epoch 358, step 3222
+Start time : 2019-09-17 19:21:36.650438
+training_batch_WER: 0.07894736842105263
+Prediction:  주차는 몇시간까지 가능한가요?  
+Reference:  주차는 몇시간까지 가능한가요?  
+Loss@Step: 3225  ::::::: 1.086601972579956
+Step time: 1.8798606395721436 seconds
+==========>>>>>>Train WER: 0.07894736842105263
+
+==========>>>>>>Train CER: 0.036231884057971016
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 141.88613891601562
+
+==========>>>>>>Evaluation WER: 1.2058823529411764
+
+==========>>>>>>Evaluation CER: 0.8625954198473282
+
+Evaluation end time : 2019-09-17 19:21:45.028683
+Finished epoch 358 in 17.617626667022705
+Starting epoch 359, step 3231
+Start time : 2019-09-17 19:21:54.268112
+Finished epoch 359 in 17.136241912841797
+Starting epoch 360, step 3240
+Start time : 2019-09-17 19:22:11.404405
+Finished epoch 360 in 17.116688013076782
+Starting epoch 361, step 3249
+Start time : 2019-09-17 19:22:28.521149
+training_batch_WER: 0.10526315789473684
+Prediction:  찾아가는길이 어딘지 자세히좀 알려주세요   
+Reference:  찾아가는길이 어딘지 자세히좀 알려주세요  
+Loss@Step: 3250  ::::::: 1.4106956720352173
+Step time: 1.879603385925293 seconds
+==========>>>>>>Train WER: 0.10526315789473684
+
+==========>>>>>>Train CER: 0.020134228187919462
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 141.9249267578125
+
+==========>>>>>>Evaluation WER: 1.2058823529411764
+
+==========>>>>>>Evaluation CER: 0.8549618320610687
+
+Evaluation end time : 2019-09-17 19:22:33.114843
+Finished epoch 361 in 17.901826858520508
+Starting epoch 362, step 3258
+Start time : 2019-09-17 19:22:46.423025
+Finished epoch 362 in 17.005544662475586
+Starting epoch 363, step 3267
+Start time : 2019-09-17 19:23:03.428623
+training_batch_WER: 0.023809523809523808
+Prediction:  음료도 배달이 가능한가요?  
+Reference:  음료도 배달이 가능한가요?  
+Loss@Step: 3275  ::::::: 0.30379223823547363
+Step time: 1.8528978824615479 seconds
+==========>>>>>>Train WER: 0.023809523809523808
+
+==========>>>>>>Train CER: 0.007352941176470588
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 142.50535583496094
+
+==========>>>>>>Evaluation WER: 1.1764705882352942
+
+==========>>>>>>Evaluation CER: 0.8473282442748091
+
+Evaluation end time : 2019-09-17 19:23:21.245125
+Finished epoch 363 in 17.8364155292511
+Starting epoch 364, step 3276
+Start time : 2019-09-17 19:23:21.265086
+Finished epoch 364 in 17.075680017471313
+Starting epoch 365, step 3285
+Start time : 2019-09-17 19:23:38.340818
+Finished epoch 365 in 17.067041635513306
+Starting epoch 366, step 3294
+Start time : 2019-09-17 19:23:55.407917
+training_batch_WER: 0.038461538461538464
+Prediction:  아기가 울까봐 걱정되는데 같이가도 괜찮을까요?  
+Reference:  아기가 울까봐 걱정되는데 같이가도 괜찮을까요?  
+Loss@Step: 3300  ::::::: 0.8675433993339539
+Step time: 1.8622386455535889 seconds
+==========>>>>>>Train WER: 0.038461538461538464
+
+==========>>>>>>Train CER: 0.011627906976744186
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 141.90277099609375
+
+==========>>>>>>Evaluation WER: 1.1764705882352942
+
+==========>>>>>>Evaluation CER: 0.8625954198473282
+
+Evaluation end time : 2019-09-17 19:24:09.295077
+Finished epoch 366 in 17.914814233779907
+Starting epoch 367, step 3303
+Start time : 2019-09-17 19:24:13.322779
+Finished epoch 367 in 17.137531518936157
+Starting epoch 368, step 3312
+Start time : 2019-09-17 19:24:30.460361
+Finished epoch 368 in 17.090460062026978
+Starting epoch 369, step 3321
+Start time : 2019-09-17 19:24:47.550876
+training_batch_WER: 0.05555555555555555
+Prediction:  가까운 버스정류장이 어딘가요?     
+Reference:  가까운 버스정류장이 어딘가요?  
+Loss@Step: 3325  ::::::: 0.6850618124008179
+Step time: 1.8524153232574463 seconds
+==========>>>>>>Train WER: 0.05555555555555555
+
+==========>>>>>>Train CER: 0.0
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 144.60342407226562
+
+==========>>>>>>Evaluation WER: 1.1470588235294117
+
+==========>>>>>>Evaluation CER: 0.8931297709923665
+
+Evaluation end time : 2019-09-17 19:24:57.884269
+Finished epoch 369 in 17.792344331741333
+Starting epoch 370, step 3330
+Start time : 2019-09-17 19:25:05.343268
+Finished epoch 370 in 17.147287845611572
+Starting epoch 371, step 3339
+Start time : 2019-09-17 19:25:22.490609
+Finished epoch 371 in 16.793009281158447
+Starting epoch 372, step 3348
+Start time : 2019-09-17 19:25:39.283673
+training_batch_WER: 0.022222222222222223
+Prediction:  아기 수저 소독하려는데 뜨거운 물 줄수 있나요?  
+Reference:  아기 수저 소독하려는데 뜨거운 물 줄수 있나요?  
+Loss@Step: 3350  ::::::: 0.4887557029724121
+Step time: 1.8600053787231445 seconds
+==========>>>>>>Train WER: 0.022222222222222223
+
+==========>>>>>>Train CER: 0.007518796992481203
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 143.84373474121094
+
+==========>>>>>>Evaluation WER: 1.1470588235294117
+
+==========>>>>>>Evaluation CER: 0.8778625954198473
+
+Evaluation end time : 2019-09-17 19:25:45.696840
+Finished epoch 372 in 17.880269289016724
+Starting epoch 373, step 3357
+Start time : 2019-09-17 19:25:57.163991
+Finished epoch 373 in 16.97072720527649
+Starting epoch 374, step 3366
+Start time : 2019-09-17 19:26:14.134770
+Finished epoch 374 in 17.12197756767273
+Starting epoch 375, step 3375
+Start time : 2019-09-17 19:26:31.256801
+training_batch_WER: 0.046511627906976744
+Prediction:  크리스마스에도 해요?    
+Reference:  크리스마스에도 해요?  
+Loss@Step: 3375  ::::::: 0.7179533243179321
+Step time: 1.8663716316223145 seconds
+==========>>>>>>Train WER: 0.046511627906976744
+
+==========>>>>>>Train CER: 0.013513513513513514
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 142.9485626220703
+
+==========>>>>>>Evaluation WER: 1.1470588235294117
+
+==========>>>>>>Evaluation CER: 0.8473282442748091
+
+Evaluation end time : 2019-09-17 19:26:33.965990
+Finished epoch 375 in 17.635932207107544
+Starting epoch 376, step 3384
+Start time : 2019-09-17 19:26:48.892782
+Finished epoch 376 in 17.074060678482056
+Starting epoch 377, step 3393
+Start time : 2019-09-17 19:27:05.966895
+training_batch_WER: 0.21951219512195122
+Prediction:  보통 주차 시간 따 있요?  
+Reference:  보통 주차 시간이 따로 있나요?  
+Loss@Step: 3400  ::::::: 2.438580274581909
+Step time: 1.857131004333496 seconds
+==========>>>>>>Train WER: 0.21951219512195122
+
+==========>>>>>>Train CER: 0.06766917293233082
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 141.76870727539062
+
+==========>>>>>>Evaluation WER: 1.1764705882352942
+
+==========>>>>>>Evaluation CER: 0.8549618320610687
+
+Evaluation end time : 2019-09-17 19:27:21.607437
+Finished epoch 377 in 17.812800407409668
+Starting epoch 378, step 3402
+Start time : 2019-09-17 19:27:23.779745
+Finished epoch 378 in 16.866294622421265
+Starting epoch 379, step 3411
+Start time : 2019-09-17 19:27:40.646132
+Finished epoch 379 in 17.132341384887695
+Starting epoch 380, step 3420
+Start time : 2019-09-17 19:27:57.778548
+training_batch_WER: 0.02040816326530612
+Prediction:  설날에 아웃백을 가고 싶은데 여는 매장이 있나요?   
+Reference:  설날에 아웃백을 가고 싶은데 여는 매장이 있나요?  
+Loss@Step: 3425  ::::::: 0.4332270622253418
+Step time: 1.738168716430664 seconds
+==========>>>>>>Train WER: 0.02040816326530612
+
+==========>>>>>>Train CER: 0.00684931506849315
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 142.72756958007812
+
+==========>>>>>>Evaluation WER: 1.1470588235294117
+
+==========>>>>>>Evaluation CER: 0.8854961832061069
+
+Evaluation end time : 2019-09-17 19:28:09.607212
+Finished epoch 380 in 17.704785346984863
+Starting epoch 381, step 3429
+Start time : 2019-09-17 19:28:15.483382
+Finished epoch 381 in 17.143418312072754
+Starting epoch 382, step 3438
+Start time : 2019-09-17 19:28:32.626852
+Finished epoch 382 in 16.847077131271362
+Starting epoch 383, step 3447
+Start time : 2019-09-17 19:28:49.473985
+training_batch_WER: 0.06666666666666667
+Prediction:  아기가 울까봐 걱정되는데 같이가도 괜찮을까요?  
+Reference:  아기가 울까봐 걱정되는데 같이가도 괜찮을까요?  
+Loss@Step: 3450  ::::::: 0.7593184113502502
+Step time: 1.8400006294250488 seconds
+==========>>>>>>Train WER: 0.06666666666666667
+
+==========>>>>>>Train CER: 0.02
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 142.25047302246094
+
+==========>>>>>>Evaluation WER: 1.1764705882352942
+
+==========>>>>>>Evaluation CER: 0.8854961832061069
+
+Evaluation end time : 2019-09-17 19:28:57.731262
+Finished epoch 383 in 17.791985034942627
+Starting epoch 384, step 3456
+Start time : 2019-09-17 19:29:07.266021
+Finished epoch 384 in 17.17115092277527
+Starting epoch 385, step 3465
+Start time : 2019-09-17 19:29:24.437225
+Finished epoch 385 in 17.137953758239746
+Starting epoch 386, step 3474
+Start time : 2019-09-17 19:29:41.575233
+training_batch_WER: 0.125
+Prediction:  아기가 울까봐 걱정되는데 같이가도 괜찮을까요?  
+Reference:  아기가 울까봐 걱정되는데 같이가도 괜찮을까요?  
+Loss@Step: 3475  ::::::: 1.0023210048675537
+Step time: 1.8576464653015137 seconds
+==========>>>>>>Train WER: 0.125
+
+==========>>>>>>Train CER: 0.019736842105263157
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 142.9066925048828
+
+==========>>>>>>Evaluation WER: 1.1470588235294117
+
+==========>>>>>>Evaluation CER: 0.8549618320610687
+
+Evaluation end time : 2019-09-17 19:29:46.062915
+Finished epoch 386 in 17.823210954666138
+Starting epoch 387, step 3483
+Start time : 2019-09-17 19:29:59.398493
+Finished epoch 387 in 17.02398180961609
+Starting epoch 388, step 3492
+Start time : 2019-09-17 19:30:16.422527
+training_batch_WER: 0.06521739130434782
+Prediction:  이번 토요일 12시에 예약 가능한가요?  
+Reference:  이번 토요일 12시에 예약 가능한가요?  
+Loss@Step: 3500  ::::::: 0.7281188368797302
+Step time: 1.8507964611053467 seconds
+==========>>>>>>Train WER: 0.06521739130434782
+
+==========>>>>>>Train CER: 0.02040816326530612
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 143.34654235839844
+
+==========>>>>>>Evaluation WER: 1.1764705882352942
+
+==========>>>>>>Evaluation CER: 0.8320610687022901
+
+Evaluation end time : 2019-09-17 19:30:34.270689
+Finished epoch 388 in 17.869948625564575
+Starting epoch 389, step 3501
+Start time : 2019-09-17 19:30:34.292525
+Finished epoch 389 in 16.779723167419434
+Starting epoch 390, step 3510
+Start time : 2019-09-17 19:30:51.072301
+Finished epoch 390 in 16.984513759613037
+Starting epoch 391, step 3519
+Start time : 2019-09-17 19:31:08.056871
+training_batch_WER: 0.02040816326530612
+Prediction:  샐러드 종류가 얼마나 되나요?  
+Reference:  샐러드 종류가 얼마나 되나요?  
+Loss@Step: 3525  ::::::: 0.4606497883796692
+Step time: 1.6794185638427734 seconds
+==========>>>>>>Train WER: 0.02040816326530612
+
+==========>>>>>>Train CER: 0.007194244604316547
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 141.75364685058594
+
+==========>>>>>>Evaluation WER: 1.1470588235294117
+
+==========>>>>>>Evaluation CER: 0.8625954198473282
+
+Evaluation end time : 2019-09-17 19:31:21.995438
+Finished epoch 391 in 17.676294803619385
+Starting epoch 392, step 3528
+Start time : 2019-09-17 19:31:25.733215
+Finished epoch 392 in 17.142913103103638
+Starting epoch 393, step 3537
+Start time : 2019-09-17 19:31:42.876179
+Finished epoch 393 in 17.01140785217285
+Starting epoch 394, step 3546
+Start time : 2019-09-17 19:31:59.887642
+training_batch_WER: 0.03773584905660377
+Prediction:  아웃백 오후에 몇시간 주차 가능한가요?  
+Reference:  아웃백 오후에 몇시간 주차 가능한가요?  
+Loss@Step: 3550  ::::::: 0.2952903211116791
+Step time: 1.86153244972229 seconds
+==========>>>>>>Train WER: 0.03773584905660377
+
+==========>>>>>>Train CER: 0.0
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 143.52249145507812
+
+==========>>>>>>Evaluation WER: 1.1470588235294117
+
+==========>>>>>>Evaluation CER: 0.8702290076335878
+
+Evaluation end time : 2019-09-17 19:32:10.038995
+Finished epoch 394 in 17.786606788635254
+Starting epoch 395, step 3555
+Start time : 2019-09-17 19:32:17.674298
+Finished epoch 395 in 16.82462477684021
+Starting epoch 396, step 3564
+Start time : 2019-09-17 19:32:34.498975
+Finished epoch 396 in 16.99976897239685
+Starting epoch 397, step 3573
+Start time : 2019-09-17 19:32:51.498798
+training_batch_WER: 0.0975609756097561
+Prediction:  여기 어딘데 배달 돼요?      요?  
+Reference:  여기 어딘데 배달 돼요?  
+Loss@Step: 3575  ::::::: 7.009297847747803
+Step time: 1.861051321029663 seconds
+==========>>>>>>Train WER: 0.0975609756097561
+
+==========>>>>>>Train CER: 0.03333333333333333
+
+Doing Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 141.5112762451172
+
+==========>>>>>>Evaluation WER: 1.1764705882352942
+
+==========>>>>>>Evaluation CER: 0.8473282442748091
+
+Evaluation end time : 2019-09-17 19:32:57.944018
+Finished epoch 397 in 17.743325233459473
+Starting epoch 398, step 3582
+Start time : 2019-09-17 19:33:09.242172
+Finished epoch 398 in 17.131332635879517
+Starting epoch 399, step 3591
+Start time : 2019-09-17 19:33:26.373558
+Finished epoch 399 in 17.135920763015747
+Saving module Jasper in /home/neoadmin/stt/Jasper/results/Jasper_1568716423.5095336-epoch-400.pt
+Saved.
+Done in 6937.695876598358
+Final Evaluation ....................... ......  ... .. . .
+==========>>>>>>Evaluation Loss: 143.4532012939453
+
+==========>>>>>>Evaluation WER: 1.2058823529411764
+
+==========>>>>>>Evaluation CER: 0.8473282442748091
+
+Evaluation end time : 2019-09-17 19:33:46.437771
+Saving module Jasper in /home/neoadmin/stt/Jasper/results/Jasper_1568716426.437834-epoch-400.pt
+Saved.
+End time : 2019-09-17 19:33:50.652176
+Duration: 1:55:48.534324
++ set +x

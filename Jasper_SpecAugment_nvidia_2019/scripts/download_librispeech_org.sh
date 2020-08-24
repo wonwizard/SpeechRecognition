@@ -16,8 +16,7 @@
 #!/usr/bin/env bash
 
 DATA_SET="LibriSpeech"
-#DATA_ROOT_DIR="/datasets"
-DATA_ROOT_DIR="/NAS/datasets"
+DATA_ROOT_DIR="/datasets"
 DATA_DIR="${DATA_ROOT_DIR}/${DATA_SET}"
 if [ ! -d "$DATA_DIR" ]
 then
