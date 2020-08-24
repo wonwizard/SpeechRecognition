@@ -1,0 +1,241 @@
+
+https://github.com/dltnwl/Korean-Speech-recognition
+
+dltnwl/Korean-Speech-recognition
+
+Korean speech recognition(End to End)
+
+CTC
+
+Listen Attend and Spell
+
+한글 초성 중성 종성으로 구분하여 사용 class 56개
+
+-------------
+
+O AI hackerton 2019 (naver) STT Basecode : Sequence-to Sequence & Attention 이용
+https://github.com/clovaai/speech_hackathon_2019
+
+O Jasper Pytorch + Specaugment (nvidia)  
+https://github.com/NVIDIA/DeepLearningExamples/tree/master/PyTorch/SpeechRecognition/Jasper
+
+O LAS + Specaugment   
+https://github.com/DemisEom/SpecAugment    A Implementation of SpecAugment with Tensorflow & Pytorchhttps://github.com/KimJeongSun/SpecAugment_numpy_scipy  SpecAugment with numpy & scipy, 100 time faster than using tensorflow.
+https://github.com/Alexander-H-Liu/End-to-end-ASR-Pytorch  Listen, Attend and Spell - PyTorch Implementation + LM
+
+O PyTorch Implementations for End-to-End Automatic Speech Recognition  RNN-T
+https://github.com/HawkAaron/E2E-ASR   
+
+
+--------------
+
+aihack_speech naver 
+
+https://github.com/clovaai/speech_hackathon_2019?fbclid=IwAR3lZm9lznAdgDA858TD4SrVVRqkVDPsdKoaiRFKKXBESmLsLWTpT87bDUg
+
+1. Installation
+edit-distance library (Levenshtein)
+[hack]$ pip install python-Levenshtein
+pytorch
+https://pytorch.org 에서 로컬 머신에 맞는 pytorch 설치 (1.0 이상 권장)
+nsml local package
+[hack]$ pip install git+https://github.com/n-CLAIR/nsml-local
+2. Training
+[hack]$ ./run.sh
+3. 해커톤 데이터셋을 로컬에 다운받아서 학습하는 방법
+데이터셋 다운로드 받기
+[hack]$ nsml dataset pull sr-hack-2019-dataset [DOWNLOAD-PATH]
+nsml을 cloud 환경으로 실행할 경우, 소스코드가 포함된 폴더를 전부 cloud로 업로드하기 때문에, 데이터셋은 nsml 소스코드 폴더와 다른 경로에 받아야 함
+main.py에 데이터셋 경로 지정하기
+#
+# ./main.py
+# 
+
+if HAS_DATASET == False:
+  DATASET_PATH = './sample_dataset' # 이 값을 데이터셋 다운로드 경로로 변경
+Training
+[hack]$ ./run.sh
+
+
+------------------------
+jasper   nvidia SpeechRecognition  
+https://github.com/NVIDIA/DeepLearningExamples/tree/master/PyTorch/SpeechRecognition/Jasper
+
+1. 인스톨 위치
+/home/neoadmin/stt/Jasper
+
+2. 필요한 것 설치
+>sudo pip install -r requirements.txt
+
+3. LibriSpeech dataset download and preprocessing   : 500GB space 필요 final 320GB
+
+>mkdir /NAS/datasets
+*sh 스크립트 파일들 속 데이터 저장 디렉토리 변경 필요
+>bash scripts/download_librispeech.sh
+/NAS/datasets/LibriSpeech/
+train-clean-100/
+train-clean-360/
+train-other-500/
+dev-clean/
+dev-other/
+test-clean/
+test-other/
+
+아래는 안해도 되는 방법 찾아서 스킵?
+convert the data into WAV files and add speed perturbation with 0.9 and 1.1 to the training files:
+>bash scripts/preprocess_librispeech.sh
+datasets/LibriSpeech/
+librispeech-train-clean-100-wav.json
+librispeech-train-clean-360-wav.json
+librispeech-train-other-500-wav.json
+librispeech-dev-clean-wav.json
+librispeech-dev-other-wav.json
+librispeech-test-clean-wav.json
+librispeech-test-other-wav.json
+train-clean-100-wav/ containsWAV files with original speed, 0.9 and 1.1
+train-clean-360-wav/ contains WAV files with original speed, 0.9 and 1.1
+train-other-500-wav/ contains WAV files with original speed, 0.9 and 1.1
+dev-clean-wav/
+dev-other-wav/
+test-clean-wav/
+test-other-wav/
+
+4. Start Training
+
+mixed precision 을 사용하지 않는다면 스크립트에서 --fp16 제거 train.py 
+By default, this will use automatic mixed precision, a batch size of 64 and run on a total of 8 GPUs. The hyperparameters are tuned for DGX-1 32GB 8x V100 GPUs and will require adjustment for 16GB GPUs
+
+>bash scripts/train.sh [OPTIONS]
+
+5. Start validation/evaluation
+
+By default, this will use full precision, a batch size of 64 and run on a single GPU.
+*dev-clean-wav
+
+>bash scripts/evaluation.sh [OPTIONS]    
+
+
+6. Start inference/predictions.
+
+By default this will use full precision, a batch size of 64 and run on a single GPU.
+*dev-clean-wav
+
+>bash scripts/inference.sh [OPTIONS]
+
+****
+한글화 - 류내원,  aihack처럼 한글을 숫자화 해 놓은 경우
+/parts/text/numbers.py 에서  text = re.sub(_number_re, _expand_number, text) 막아 숫자를 words 로 변경하는 부분 막음
+/configs/jasper10x5dr_sp_offline_specaugment.toml 파일에 마지막줄 labels 를 변경 (aihack 코드들의 hackathon.labels 참조)    
+
+/scripts/train.sh
+val_manifest  /NAS/datasets/LibriSpeech/librispeech-dev-clean-wav.json
+train_manifest  /NAS/datasets/LibriSpeech/librispeech-train-clean-100-wav.json
+
+DATA_DIR=${1:-"/home/neoadmin/stt/aihack_speech/baseline/sample_dataset/train"}
+--val_manifest=$DATA_DIR/val-wav.json
+--train_manifest=$DATA_DIR/train-wav.json
+
+
+train.py 
+argument : train_manifest, val_manifest  ->  dataset.py AudioToTextDataLayer() 
+Dataset that loads tensors via a json file containing paths to audio files, transcripts, and durations(in seconds).
+
+* json file 
+  {
+    "files": [
+      {
+        "sample_rate": 16000.0,
+        "encoding": "Signed Integer PCM",
+        "fname": "train_data/KsponSpeech_000005.wav",
+        "silent": false,
+        "channels": 1,
+        "num_samples": 31280,
+        "bitrate": 16,
+        "speed": 1,
+        "duration": 5.73
+      }
+    ],
+    "original_duration": 5.73,
+    "transcript": " 그게 영점일프로 가정의 아이들과 가정의 모습이야 ",
+    "original_num_samples": 31280
+  },
+
+
+
+    
+
+dataset.py  -> 아래 바꾸어야 한글로 Reference (transcrits) 가 나옴
+153  normalize_transcripts = kwargs.get('normalize_transcripts', True)
+     normalize_transcripts = kwargs.get('normalize_transcripts', False)
+
+
+--------
+
+wav 파일 duration time
+
+import librosa
+
+y = librosa.load("Libri84-121123-0000.wav",sr=16000)
+
+duration = librosa.get_duration(y=y, sr=sr)
+
+num_samples = duration*16000
+
+print (duraion,num_samples)
+
+---
+
+import os
+import librosa
+
+def read_dir(path):
+    file_list = []
+    for root, dirs, files in os.walk(path):
+        for fname in files:
+            full_fname = os.path.join(root, fname)
+            file_list.append(full_fname)
+    return file_list
+
+dir_path = "C:/Users/jun/PycharmProjects/musicdata" #Audio 파일들이 있는 폴더 경로
+file_list = read_dir(dir_path)
+
+y, sr = librosa.load(file_list[0],sr=16000) 
+duration = int(librosa.get_duration(y=y, sr=sr))
+
+
+
+---------
+
+
+Scripts and sample code
+In the root directory, the most important files are:
+
+train.py - Serves as entry point for training
+inference.py - Serves as entry point for inference and evaluation
+model.py - Contains the model architecture
+dataset.py - Contains the data loader and related functionality
+optimizer.py - Contains the optimizer
+inference_benchmark.py - Serves as inference benchmarking script that measures the latency of pre-processing and the acoustic model
+requirements.py - Contains the required dependencies that are installed when building the Docker container
+Dockerfile - Container with the basic set of dependencies to run Jasper
+The scripts/ folder encapsulates all the one-click scripts required for running various supported functionalities, such as:
+
+train.sh - Runs training using the train.py script
+inference.sh - Runs inference using the inference.py script
+evaluation.sh - Runs evaluation using the inference.py script
+download_librispeech.sh - Downloads LibriSpeech dataset
+preprocess_librispeech.sh - Preprocess LibriSpeech raw data files to be ready for training and inference
+inference_benchmark.sh - Runs the inference benchmark using the inference_benchmark.py script
+train_benchmark.sh - Runs the training performance benchmark using the train.py script
+docker/ - Contains the scripts for building and launching the container
+Other folders included in the root directory are:
+
+configs/ - Model configurations
+utils/ - Contains the necessary files for data download and processing
+parts/ - Contains the necessary files for data pre-processing
+
+
+
+
+
+
