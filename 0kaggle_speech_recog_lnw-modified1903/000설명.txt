@@ -1,0 +1,5 @@
+﻿
+book 머신러닝탐구생활 03구글 음성인식경진대회 baseline code pytorch
+
+kaggle Speech Recognition Challenge
+https://www.kaggle.com/c/tensorflow-speech-recognition-challenge

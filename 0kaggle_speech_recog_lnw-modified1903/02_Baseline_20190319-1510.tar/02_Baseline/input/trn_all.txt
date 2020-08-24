@@ -1,0 +1,5 @@
+voice,none,/home/neoadmin/kaggle_speech_recog/competitions_data/input/trnvoice/ffa76c4a_nohash_0-12800.wav
+voice,none,/home/neoadmin/kaggle_speech_recog/competitions_data/input/trnvoice/ffa76c4a_nohash_0-16000.wav
+noise,none,/home/neoadmin/kaggle_speech_recog/competitions_data/input/trnnoise/ffcefb7816-16000.wav
+noise,none,/home/neoadmin/kaggle_speech_recog/competitions_data/input/trnnoise/ffcefb7816-12800.wav
+noise,none,/home/neoadmin/kaggle_speech_recog/competitions_data/input/trnnoise/ffcefb7816-25600.wav
