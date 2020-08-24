@@ -1,0 +1,4 @@
+﻿O LAS + Specaugment   
+https://github.com/DemisEom/SpecAugment    A Implementation of SpecAugment with Tensorflow & Pytorch
+https://github.com/KimJeongSun/SpecAugment_numpy_scipy  SpecAugment with numpy & scipy, 100 time faster than using tensorflow
+https://github.com/Alexander-H-Liu/End-to-end-ASR-Pytorch  Listen, Attend and Spell - PyTorch Implementation + LM
