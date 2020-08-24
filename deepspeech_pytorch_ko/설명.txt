@@ -1,0 +1,5 @@
+﻿https://github.com/homink/deepspeech.pytorch.ko
+
+deepspeech.pytorch.ko
+A few changes has been made to train Korean. Please review deepspeech.pytorch in advance.
+https://github.com/SeanNaren/deepspeech.pytorch
